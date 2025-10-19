@@ -5,7 +5,7 @@ const page = () => {
     <div>
         ktau project details page,
 
-        e kie array me projects, de e bojsh projects.filter((project) => project.id == id)
+        e kie array me projects, de e bojsh projects.filter((project) =S project.id == id)
     </div>
   )
 }
