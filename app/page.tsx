@@ -1,3 +1,4 @@
+import About from "@/components/AboutHome/About";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services/Services";
@@ -14,6 +15,10 @@ export default function Home() {
       
       <div>
         <Services />
+      </div>
+
+      <div>
+        <About />
       </div>
 
     </div>
