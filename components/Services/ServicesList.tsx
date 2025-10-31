@@ -44,11 +44,11 @@ const ServicesList = () => {
 
 
   return (
-    <div className=' grid grid-cols-3 gap-20 justify-center items-center mx-auto'>
+    <div className='grid grid-cols-3 gap-20 justify-center items-center mx-auto'>
         {
-            constructionServices && constructionServices.map((service: any) => (
-                <div className='flex  gap-2'>
-                    <ServiceCard service={service} />
+            constructionServices && constructionServices.map((service: any, idx: number) => (
+                <div key={idx} className='flex gap-2'>
+                    <ServiceCard key={idx + 10} service={service} />
                 </div>
             ))
         }

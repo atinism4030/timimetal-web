@@ -35,9 +35,9 @@ const AboutList = () => {
   return (
     <div className='grid grid-cols-2 gap-x-75 my-10 w-fit mx-auto ml-25 '>
         {
-            AboutList && AboutList.map((icon: any) => (
-                <div>
-                    <AboutIcons icon = {icon}/>
+            AboutList && AboutList.map((icon: any, idx: number) => (
+                <div key={idx}>
+                    <AboutIcons key={idx} icon = {icon}/>
                 </div>
             ))
         }

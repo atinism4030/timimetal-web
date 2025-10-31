@@ -1,12 +1,22 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
+import { IProject } from '../page'
+import { getProjectById } from '@/utils/projects';
+import ProjectCard from '@/components/Projects/ProjectCard';
 
 const page = () => {
+  const [project, setProject] = useState<IProject>();
+  const selectedProjectId = window.location.pathname.split('/')[2]
+  
+  useEffect(() => {
+    getProjectById(Number(selectedProjectId)).then((data) => {
+      setProject(data)})
+  },[])
+
   return (
     <div>
-        ktau project details page,
-
-        e kie array me projects, de e bojsh projects.filter((project) =S project.id == id)
-    </div>
+      <ProjectCard key={new Date().getDay()} project={project!} />
+  </div>
   )
 }
 
