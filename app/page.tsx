@@ -1,4 +1,6 @@
 import About from "@/components/AboutHome/About";
+import Footer from "@/components/Footer";
+import GetInTouch from "@/components/GetInTouch/GetInTouch";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProjectsHome from "@/components/Projects/ProjectsHome";
@@ -25,6 +27,14 @@ export default async  function Home() {
 
       <div>
         <ProjectsHome />
+      </div>
+
+      <div>
+        <GetInTouch />
+      </div>
+
+      <div>
+        <Footer />
       </div>
 
     </div>

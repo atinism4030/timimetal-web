@@ -80,7 +80,7 @@ export const projects: IProject[] = [
     date: "2025-05-25"
   },
   {
-    id: 12, name: "nova struktura spar nextex", description: "arkitektura moderne",
+    id: 12, name: "nova struktura spar nextexxx", description: "arkitektura moderne",
     pic: image3.src,
     adrres: "Poroj",
     date: "2025-11-22"

@@ -27,8 +27,8 @@ const ProjectCard = ({ project }: { project: IProject }) => {
           {project?.name}
         </h3>
         <div className="flex justify-around text-gray-400 ">
-          <div className="flex">
-            <Image src={PinIcon} alt="Pin Icon" width={20} height={25} />
+          <div className="flex ">
+            <Image src={PinIcon} alt="Pin Icon" width={25} height={25} />
             {project?.adrres}
           </div>
           <div className="flex">

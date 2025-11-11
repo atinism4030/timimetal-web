@@ -5,7 +5,7 @@ import img from "@/public/Background.png"
 const Hero = () => {
     return (
         <div>
-        <Image alt='Timimetal WorkPlace' src={img} />
+        <Image alt='Timimetal WorkPlace' src={img} priority />
         </div>
   )
 }
