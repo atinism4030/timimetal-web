@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const About = () => {
   return (
-    <div className='bg-gray-200 py-25 '>
+    <div className='bg-gray-100 py-40 w-full h-1/2 '>
     <div className=''>
         <h2 className='text-black text-5xl  flex justify-baselin ml-25  pb-5'>Building Excellence Since 1999</h2>
     </div>

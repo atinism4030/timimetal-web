@@ -2,7 +2,7 @@ import React from 'react'
 
 const AboutIcons = ({icon}:any) => {
   return (
-    <div className='flex flex-col items-center justify-centerl p-4 w-48 h-64 mx-auto'>
+    <div className='flex flex-col items-center justify-centerl p-1 w-48 h-64 mx-auto'>
         <div className='bg-blue-200 flex justify-center items-center rounded-xl w-24 h-24 mb-3'>
             {icon.icon}
         </div>

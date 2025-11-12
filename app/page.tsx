@@ -10,14 +10,14 @@ export default async  function Home() {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="h-[20%]">
+      <div>
         <Header />
       </div>
       <div>
         <Hero />
       </div>
       
-      <div>
+      <div id="services">
         <Services />
       </div>
 

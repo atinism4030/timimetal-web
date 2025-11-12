@@ -47,7 +47,7 @@ export default function HeroVideo() {
       {/* ✨ TEKSTI NË KËNDIN E MAJTË POSHTË */}
       <div
         className={`absolute top-1/2 left-10 md:left-20 -translate-y-1/2 max-w-400 transition-all duration-1000 ${
-          showText ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          showText ? "opacity-100 translate-x-10" : "opacity-0 -translate-x-10"
         }`}
       >
         {/* TITULLI KRYESOR
@@ -57,7 +57,7 @@ export default function HeroVideo() {
           Let’s Bring Your Ideas to Life
         </h1> */}
 
-        <div className="text-8xl">
+        <div className="text-7xl ">
           <h1>
             Welcome to <span className="font-bold">Timimetal</span>
             <br /> Let`s Bring Your Ideas to Life

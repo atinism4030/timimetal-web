@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const ProjectsHome = async () => {
   return (
-    <div className="bg-gray-200 py-25">
+    <div className="bg-gray-200 py-25 w-full h-full">
       <h2 className="text-black text-6xl flex justify-center pb-5">
         Featured Projects
       </h2>
