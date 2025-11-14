@@ -1,4 +1,5 @@
 import About from "@/components/AboutHome/About";
+import AboutSection from "@/components/AboutHome/AboutSection";
 import Footer from "@/components/Footer";
 import GetInTouch from "@/components/GetInTouch/GetInTouch";
 import Header from "@/components/Header";
@@ -22,7 +23,8 @@ export default async  function Home() {
       </div>
 
       <div>
-        <About />
+        {/* <About /> */}
+        <AboutSection />
       </div>
 
       <div>
