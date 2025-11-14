@@ -1,5 +1,4 @@
-import About from "@/components/AboutHome/About";
-import AboutSection from "@/components/AboutHome/AboutSection";
+import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import GetInTouch from "@/components/GetInTouch/GetInTouch";
 import Header from "@/components/Header";
