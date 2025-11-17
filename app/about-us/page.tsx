@@ -12,6 +12,8 @@ import FactCard, { HighlightFacts } from "@/components/About/FactCard";
 import { facts } from "@/utils/facts";
 import { reasons } from "@/utils/WhyUsReason";
 import ReasonCard from "@/components/About/ReasonCard";
+import TimeLineItem from "@/components/About/TimeLineItem";
+import { milestones } from "@/utils/milestone";
 
 const page = () => {
   return (
@@ -163,7 +165,6 @@ const page = () => {
       </div>
 
       <section className="py-32 bg-gradient-to-b from-[#F3F6FB] via-white to-[#F3F6FB] relative overflow-hidden">
-        {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 -left-20 w-96 h-96 bg-[#60A5FA] opacity-5 rounded-full blur-3xl" />
           <div className="absolute bottom-20 -right-20 w-96 h-96 bg-[#2563EB] opacity-5 rounded-full blur-3xl" />
@@ -248,6 +249,34 @@ const page = () => {
           </motion.div>
         </div>
       </section>
+      <div className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+          className="text-center mb-20"
+          initial={{opacity:0, y:30}}
+          whileInView={{opacity:1,y:0}}
+          viewport={{once:true}}
+          transition={{duration:0.6}}
+          >
+            <span className="inline-block px-6 py-2 bg-[#F3F6FB] text-[#2563EB] rounded-full mb-4">Udhetimi Yne</span>
+            <h2 className="text-[#1E3A8A] mb-4">Company Journey</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Nga nje puntori e vogel ne nje kompani linder rajonale - historia
+              e rritjes dhe sukssesit tone
+            </p>
+          </motion.div>
+          <div className="space-y-16 lg:space-y-24">
+            {milestones.map((milestone, index) => (
+              <TimeLineItem
+                key={milestone.id}
+                milestone={milestone}
+                index={index}
+                isLast={index === milestones.length - 1}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
