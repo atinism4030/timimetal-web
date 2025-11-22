@@ -14,6 +14,7 @@ import { reasons } from "@/utils/WhyUsReason";
 import ReasonCard from "@/components/About/ReasonCard";
 import TimeLineItem from "@/components/About/TimeLineItem";
 import { milestones } from "@/utils/milestone";
+import Certificatons from "@/components/About/Certificatons";
 
 const page = () => {
   return (
@@ -277,6 +278,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <Certificatons />
     </div>
   );
 };
