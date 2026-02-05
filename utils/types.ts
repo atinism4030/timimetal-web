@@ -2,11 +2,21 @@ import { LucideIcon } from "lucide-react";
 
 export interface IProject {
   id: number;
-  title: string;
+  name?: string;
+  title?: string;
   description: string;
   image: string;
-  icon: LucideIcon;
+  images?: string[];
+  pic?: string;
+  icon?: LucideIcon;
   date: string;
   location: string;
   category: string;
+  client?:string;
+  challenges?: string[];
+  solutions?: string[];
+  results?: string[];
+  duration?: string;
+      fullDescription?: string;
+
 }

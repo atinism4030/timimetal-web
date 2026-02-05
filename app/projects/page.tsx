@@ -3,17 +3,10 @@ import ProjectList from '@/components/Projects/ProjectList'
 import { projects } from '@/utils/projects';
 import React from 'react'
 
-export interface IProject {
-  id: number;
-  pic:  string  ;
-  adrres: string;
-  date: string
-  name: string;
-  description: string;
-}
 
 const page = () => {
-
+  console.log({projects});
+  
   return (
     <div className='bg-white'>
       <ProjectList projects={projects} />
