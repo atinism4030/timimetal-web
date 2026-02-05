@@ -19,88 +19,63 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, isActive, onClick, onNext }) => {
   return (
-    <motion.div
-      layout
-      whileHover={!isActive ? { scale: 1.04, y: -3 } : {}}
-      transition={{
-        layout: { type: "spring", duration: 0.8, bounce: 0.25 },
-        ease: [0.16, 1, 0.3, 1],
-      }}
+    <div
       onClick={onClick}
-      // Përmasat e reja, më të mëdha
-      className={`relative bg-white border border-gray-200 shadow-xl rounded-2xl p-8 cursor-pointer overflow-hidden transition-all duration-700 ease-in-out flex flex-col hover:shadow-2xl ${
-        isActive ? "h-[340px]" : "h-[240px]" // Kartë e mbyllur më e madhe
-      }`}
+      className={`relative bg-white border border-gray-200 rounded-xl p-8 cursor-pointer overflow-hidden flex flex-col transition-all duration-300 ease-in-out hover:border-blue-500 hover:shadow-lg ${isActive ? "h-auto ring-1 ring-blue-500 shadow-xl" : "h-[240px]"
+        }`}
     >
       {/* Header */}
       <div className="flex justify-between items-start mb-4 relative z-10">
         <div className="flex items-center gap-4">
-          {/* Ikona */}
-          <motion.div
-            layoutId={`icon-${service.title}`}
-            className="bg-blue-50 w-14 h-14 flex justify-center items-center rounded-xl shadow-inner flex-shrink-0"
-          >
+          {/* Icon */}
+          <div className="bg-blue-50 w-14 h-14 flex justify-center items-center rounded-lg text-blue-600 shadow-sm border border-blue-100">
             {service.icon}
-          </motion.div>
-          <h2 className="text-2xl font-bold text-gray-900 drop-shadow-sm line-clamp-2">
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 line-clamp-2">
             {service.title}
           </h2>
         </div>
-        
-        {/* Butoni "✕" ose "⋮" */}
-        {isActive ? (
-            <motion.button
-                onClick={(e) => {
-                    e.stopPropagation();
-                    onClick();
-                }}
-                className="text-gray-400 hover:text-black text-2xl"
-            >
-                ✕
-            </motion.button>
-        ) : (
-            <div className="text-gray-400 text-3xl select-none">⋮</div>
-        )}
+
+        {/* Toggle Icon */}
+        <div className="text-gray-400">
+          {isActive ? "✕" : "⋮"}
+        </div>
       </div>
 
-      {/* Përshkrimi i shkurtër */}
-      <p className="mt-4 text-gray-700 text-lg relative z-10">
+      {/* Short Description */}
+      <p className="mt-2 text-gray-600 text-base leading-relaxed relative z-10">
         {service.desc}
       </p>
 
-      {/* Përmbajtja kur hapet */}
+      {/* Expanded Content - Simple Fade In */}
       <AnimatePresence>
         {isActive && (
           <motion.div
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="mt-6 space-y-4 text-gray-700 overflow-y-auto pr-4 flex-grow relative z-10"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="mt-4 pt-4 border-t border-gray-100 text-gray-600 overflow-hidden"
           >
-            <p className="font-semibold text-black mb-3">Detajet e Shërbimit:</p>
-            <p className="text-base leading-relaxed">{service.descOpen}</p>
+            <p className="font-semibold text-gray-900 mb-2 text-sm">Service Details</p>
+            <p className="text-sm leading-relaxed">{service.descOpen}</p>
+
+            {/* Next Button inside expanded area */}
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onNext();
+                }}
+                className="p-2 rounded-full hover:bg-gray-100/80 text-blue-600 transition-colors flex items-center gap-2 text-sm font-semibold"
+              >
+                Next Service →
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Butoni Next/Arrow */}
-      {isActive && (
-        <motion.button
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="absolute bottom-6 right-8 bg-black text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-gray-800 transition-all duration-300 z-20"
-        >
-          →
-        </motion.button>
-      )}
-    </motion.div>
+    </div>
   );
 };
 

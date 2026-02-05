@@ -6,59 +6,72 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="bg-[rgb(3,5,34)] h-130">
-      <div className="flex grid-cols-4 justify-around pt-30 pb-10 text-gray-300">
-        <div>
-          <h1 className="py-5">Timimetal</h1>
-          <p className="w-100 py-5 text-gray-300">
+    <div className="bg-[rgb(3,5,34)] py-16 text-gray-300 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-10">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-2xl font-bold text-white">Timimetal</h1>
+          <p className="max-w-xs text-gray-400 leading-relaxed">
             Leading metal construction company delivering innovative structural
             solutions for industrial, commercial, and infrastructure projects
             since 1999.
           </p>
-          <div className="flex py-1 ">
-            <Image alt="phone Icon" src={PhoneIcon} width={30} />
-            <p className="px-2">+38910209553</p>
+          <div className="flex items-center gap-3">
+            <Image alt="phone Icon" src={PhoneIcon} width={24} height={24} />
+            <p>+38910209553</p>
           </div>
-          <div className="flex py-1 ">
-            <Image alt="MailIcon" src={MailIcon} width={30} />
-            <p className="px-2">info@timimetal.com</p>
+          <div className="flex items-center gap-3">
+            <Image alt="MailIcon" src={MailIcon} width={24} height={24} />
+            <p>info@timimetal.com</p>
           </div>
-          <div className="flex py-1 ">
-            <Image alt="LocationIcon" src={LocationIcon} width={18} />
-            <p className="px-5">Tetove</p>
+          <div className="flex items-center gap-3">
+            <Image alt="LocationIcon" src={LocationIcon} width={24} height={24} />
+            <p>Tetove</p>
           </div>
         </div>
-        <div className="">
-          <h2 className="font-bold text-2xl py-2">Services</h2>
-          <p className="py-0.5">Structural Steel</p>
-          <p className="py-0.5">Metal Fabrication</p>
-          <p className="py-0.5">Installation</p>
-          <p className="py-0.5">Quality Control</p>
-          <p className="py-0.5">Maintance and Repair</p>
-        </div >
-        <div >
-          <h2 className="font-bold text-2xl py-2">Company</h2>
-          <p className="py-0.5">About Us</p>
-          <p className="py-0.5">Our Team</p>
-          <p className="py-0.5">Careers</p>
-          <p className="py-0.5">News&Updates</p>
-          <p className="py-0.5">Safety Standards</p>
-        </div>
+
         <div>
-          <h2 className="font-bold text-2xl py-2">Resources</h2>
-          <p className="py-0.5">Project Gallery</p>
-          <p className="py-0.5">Technicall Spesefications</p>
-          <p className="py-0.5">Downloads</p>
-          <p className="py-0.5">Case studies</p>
-          <p className="py-0.5">Industry Insights</p>
+          <h2 className="font-bold text-xl text-white mb-4">Services</h2>
+          <div className="flex flex-col gap-2 text-gray-400">
+            <p>Structural Steel</p>
+            <p>Metal Fabrication</p>
+            <p>Installation</p>
+            <p>Quality Control</p>
+            <p>Maintance and Repair</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="font-bold text-xl text-white mb-4">Company</h2>
+          <div className="flex flex-col gap-2 text-gray-400">
+            <p>About Us</p>
+            <p>Our Team</p>
+            <p>Careers</p>
+            <p>News & Updates</p>
+            <p>Safety Standards</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="font-bold text-xl text-white mb-4">Resources</h2>
+          <div className="flex flex-col gap-2 text-gray-400">
+            <p>Project Gallery</p>
+            <p>Technicall Spesefications</p>
+            <p>Downloads</p>
+            <p>Case studies</p>
+            <p>Industry Insights</p>
+          </div>
         </div>
       </div>
-      <hr className="border-gray-400 w-500 mx-auto my-4"/>
-      <div className="flex justify-around tex-sm text-gray-600">
-        <p>2025 Timimetal, All Rights reserved. </p>
-        <p>Privacy Policy</p>
-        <p>Tearms of Service</p>
-        <p>Site Map</p>
+
+      <hr className="border-gray-800 my-8" />
+
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 max-w-7xl mx-auto">
+        <p>&copy; 2025 Timimetal, All Rights reserved. </p>
+        <div className="flex flex-wrap justify-center gap-6">
+          <p>Privacy Policy</p>
+          <p>Terms of Service</p>
+          <p>Site Map</p>
+        </div>
       </div>
     </div>
   );

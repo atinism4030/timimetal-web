@@ -6,22 +6,20 @@ import { MdArchitecture, MdRoofing, MdSolarPower } from "react-icons/md";
 import { PiFactoryThin } from "react-icons/pi";
 import { TbWaveSawTool, TbCarCrane } from "react-icons/tb";
 
-// Definimi i tipit të shërbimit
 interface Service {
-  title: string;
-  desc: string;
-  descOpen: string;
-  icon: React.ReactNode;
+    title: string;
+    desc: string;
+    descOpen: string;
+    icon: React.ReactNode;
 }
 
-// Përdorim vetëm 6 shërbime
 const services: Service[] = [
-    { title: "Structural Engineering", desc: "Reliable steel and concrete design.", descOpen: "Ky shërbim ofron dizajne të qëndrueshme të çelikut dhe betonit, duke siguruar integritetin e projektit tuaj me standardet më të larta inxhinierike.", icon: <TbWaveSawTool size={38} color="#0070f3" /> },
-    { title: "Architectural Design", desc: "Innovative and sustainable planning.", descOpen: "Ne ofrojmë planifikim inovativ dhe të qëndrueshëm, duke përfshirë modelimin 3D dhe vizualizime të detajuara për të realizuar vizionin tuaj.", icon: <MdRoofing size={38} color="#0070f3" /> },
-    { title: "Project Management", desc: "Supervision and on-time delivery.", descOpen: "Menaxhimi i plotë i projektit, duke garantuar mbikëqyrje të saktë, respektim të afateve dhe kontrolle të rrepta të cilësisë nga fillimi në fund.", icon: <PiFactoryThin size={38} color="#0070f3" /> },
-    { title: "Metal Fabrication", desc: "Industrial and commercial builds.", descOpen: "Prerje, saldim dhe montim metali me precizion të lartë për projekte industriale dhe komerciale, duke përdorur teknologjinë më të fundit.", icon: <TbCarCrane size={38} color="#0070f3" /> },
-    { title: "Consulting", desc: "Expert technical support.", descOpen: "Mbështetje teknike eksperte dhe studime fizibiliteti për projekte të mëdha, duke ofruar këshilla strategjike dhe zgjidhje të orientuara drejt të dhënave.", icon: <MdArchitecture size={38} color="#0070f3" /> },
-    { title: "Electrical Systems", desc: "Smart integrated systems.", descOpen: "Dizajn dhe instalim i sistemeve elektrike të zgjuara, duke siguruar efikasitet energjetik dhe integrim të plotë të teknologjisë moderne në ndërtesën tuaj.", icon: <MdSolarPower size={38} color="#0070f3" /> },
+    { title: "Structural Engineering", desc: "Reliable steel and concrete design.", descOpen: "Reliable structural designs for steel and concrete, ensuring your project's integrity with the highest engineering standards.", icon: <TbWaveSawTool size={38} color="#0070f3" /> },
+    { title: "Architectural Design", desc: "Innovative and sustainable planning.", descOpen: "Innovative and sustainable planning, including 3D modeling and detailed visualizations to realize your vision.", icon: <MdRoofing size={38} color="#0070f3" /> },
+    { title: "Project Management", desc: "Supervision and on-time delivery.", descOpen: "Complete project management, ensuring precise supervision, deadline compliance, and strict quality controls from start to finish.", icon: <PiFactoryThin size={38} color="#0070f3" /> },
+    { title: "Metal Fabrication", desc: "Industrial and commercial builds.", descOpen: "High-precision metal cutting, welding, and assembly for industrial and commercial projects using the latest technology.", icon: <TbCarCrane size={38} color="#0070f3" /> },
+    { title: "Consulting", desc: "Expert technical support.", descOpen: "Expert technical support and feasibility studies for large scale projects, providing strategic advice and data-driven solutions.", icon: <MdArchitecture size={38} color="#0070f3" /> },
+    { title: "Electrical Systems", desc: "Smart integrated systems.", descOpen: "Design and installation of smart electrical systems, ensuring energy efficiency and full integration of modern technology in your building.", icon: <MdSolarPower size={38} color="#0070f3" /> },
 ];
 
 const ServicesList: React.FC = () => {
@@ -35,60 +33,32 @@ const ServicesList: React.FC = () => {
     return (
         <motion.div
             layout
-            transition={{ layout: { type: "spring", duration: 0.8, bounce: 0.2 } }}
-            className={`grid transition-all duration-700 gap-6 w-full max-w-[1200px] mx-auto py-10 px-6 relative h-[600px]
-            ${activeIndex === null ? "grid-cols-3" : "grid-cols-4"}`}
+            transition={{ layout: { type: "spring", duration: 0.5, bounce: 0.1 } }}
+            className={`grid gap-6 w-full max-w-[1200px] mx-auto py-10 px-6 relative h-auto min-h-[600px]
+            grid-cols-1 ${activeIndex === null ? "md:grid-cols-3" : "md:grid-cols-4"}`}
         >
             {services.map((service, idx) => {
                 const isActive = activeIndex === idx;
-                
-                let scale = 1;
-                let opacity = 1;
-                let z = 5;
-                let x = 0;
-                let y = 0;
-                let blur = 0;
-
-                if (activeIndex !== null) {
-                    if (isActive) {
-                        z = 50;
-                    } else {
-                        // Kartat Jo-Aktive
-                        scale = 0.9;     
-                        opacity = 0.6;   
-                        z = 1;
-                        blur = 1;       
-
-                        y = Math.random() * 10 - 5; 
-                        x = Math.random() * 10 - 5;
-                    }
-                }
 
                 return (
                     <motion.div
                         key={idx}
                         layout
-                        animate={{ scale, opacity, x, y, zIndex: z }}
-                        transition={{ 
-                            layout: { type: "spring", duration: 0.8, bounce: 0.25 },
-                            scale: { duration: 0.4 }, 
-                            opacity: { duration: 0.4 },
-                            x: { duration: 0.4 },
-                            y: { duration: 0.4 },
+                        initial={false}
+                        animate={{
+                            opacity: activeIndex !== null && !isActive ? 0.6 : 1,
+                            scale: activeIndex !== null && !isActive ? 0.95 : 1
                         }}
+                        transition={{ duration: 0.3 }}
                         onClick={() => setActiveIndex(isActive ? null : idx)}
-                        className={`relative transition-all duration-700 ease-in-out cursor-pointer ${
-                            isActive ? "col-span-3" : "col-span-1"
-                        }`}
-                        style={{
-                            filter: `blur(${blur}px)`,
-                        }}
+                        className={`relative cursor-pointer transition-all duration-300 ${isActive ? "md:col-span-3" : "md:col-span-1"
+                            }`}
                     >
                         <ServiceCard
                             service={service}
                             isActive={isActive}
                             onClick={() => setActiveIndex(isActive ? null : idx)}
-                            onNext={handleNext} // Lëviz te karta tjetër
+                            onNext={handleNext}
                         />
                     </motion.div>
                 );
