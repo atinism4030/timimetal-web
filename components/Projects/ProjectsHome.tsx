@@ -1,9 +1,12 @@
 import React from "react";
-import { fetchProjecst, projects } from "@/utils/projects";
 import ProjectList from "./ProjectList";
 import Link from "next/link";
+import { getProjects } from "@/app/actions/projects";
 
 const ProjectsHome = async () => {
+  const projects = await getProjects();
+  const featuredProjects = projects.slice(0, 3);
+
   return (
     <div className="bg-gray-200 py-16 md:py-24 w-full h-full">
       <h2 className="text-black text-4xl md:text-6xl flex justify-center pb-5 text-center px-4">
@@ -15,7 +18,7 @@ const ProjectsHome = async () => {
       </p>
 
       <div>
-        <ProjectList projects={(await fetchProjecst(3)) || []} />
+        <ProjectList projects={featuredProjects} />
       </div>
 
       <div className="flex justify-center mx-auto items-center mt-8">
@@ -31,3 +34,4 @@ const ProjectsHome = async () => {
 };
 
 export default ProjectsHome;
+

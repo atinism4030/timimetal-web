@@ -7,9 +7,8 @@ import { IProject } from "@/utils/types";
 import Link from "next/link";
 
 
-export function ProjectDetails(p: IProject) {
-  const project = p.project;
-  
+export function ProjectDetails({ project }: { project: IProject }) {
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Back Button */}
@@ -30,7 +29,7 @@ export function ProjectDetails(p: IProject) {
             transition={{ delay: 0.1 }}
           >
             <h1 className="mb-6 text-[#0a0e1a] text-4xl md:text-5xl lg:text-6xl">{project?.title}</h1>
-            
+
             {/* Project Meta Information */}
             <div className="flex flex-wrap gap-4 mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 shadow-sm">

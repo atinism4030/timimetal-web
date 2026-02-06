@@ -1,7 +1,7 @@
 import { LucideIcon } from "lucide-react";
 
 export interface IProject {
-  id: number;
+  id: string;
   name?: string;
   title?: string;
   description: string;
@@ -12,11 +12,11 @@ export interface IProject {
   date: string;
   location: string;
   category: string;
-  client?:string;
+  client?: string;
   challenges?: string[];
   solutions?: string[];
   results?: string[];
   duration?: string;
-      fullDescription?: string;
+  fullDescription?: string;
 
 }

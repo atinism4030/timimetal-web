@@ -6,20 +6,7 @@ export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showText, setShowText] = useState(false);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
 
-    const handleTimeUpdate = () => {
-      if (video.duration - video.currentTime <= 1.2) {
-        setShowText(true);
-      }
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-
-    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
-  }, []);
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -28,7 +15,9 @@ export default function HeroVideo() {
         src="timimetal-drone.mp4"
         autoPlay
         muted
+        loop
         playsInline
+        onPlay={() => setShowText(true)}
         className="absolute inset-0 w-full h-full object-cover brightness-90"
       />
 
@@ -44,6 +33,7 @@ export default function HeroVideo() {
             <br /> Let`s Bring Your Ideas to Life
           </h1>
         </div>
+
 
         <p className="text-gray-200 text-lg md:text-2xl lg:text-3xl mt-6 max-w-2xl leading-snug">
           Industrial, commercial, infrastructure, LGS, eco-friendly homes — we

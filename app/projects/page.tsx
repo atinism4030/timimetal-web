@@ -1,12 +1,23 @@
 "use client";
 import ProjectList from "@/components/Projects/ProjectList";
-import { projects } from "@/utils/projects";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Grid, ChevronDown } from "lucide-react";
+import { getProjects } from "@/app/actions/projects";
+import { IProject } from "@/utils/types";
 
 const ProjectsPage = () => {
+  const [projectsList, setProjectsList] = useState<IProject[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getProjects().then((data) => {
+      setProjectsList(data);
+      setIsLoading(false);
+    });
+  }, []);
+
   return (
     <div className="bg-white min-h-screen pt-10 pb-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
@@ -61,7 +72,7 @@ const ProjectsPage = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 max-w-5xl mx-auto">
           {[
-            { value: "150+", label: "Completed Projects" },
+            { value: projectsList.length + "+", label: "Completed Projects" },
             { value: "98%", label: "Client Satisfaction" },
             { value: "25+", label: "Years Experience" },
           ].map((stat, index) => (
@@ -82,7 +93,7 @@ const ProjectsPage = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pb-8 mb-8 border-b border-gray-100 gap-4">
           <div className="flex items-center gap-2 text-gray-500">
             <Grid size={20} className="text-blue-500" />
-            <span>Showing <span className="font-semibold text-gray-900">{projects.length}</span> projects</span>
+            <span>Showing <span className="font-semibold text-gray-900">{projectsList.length}</span> projects</span>
           </div>
 
           <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 text-gray-700 hover:border-blue-300 hover:text-blue-600 bg-white transition-all text-sm font-medium">
@@ -92,7 +103,13 @@ const ProjectsPage = () => {
         </div>
 
         {/* Projects List */}
-        <ProjectList projects={projects} />
+        {isLoading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          </div>
+        ) : (
+          <ProjectList projects={projectsList} />
+        )}
       </div>
     </div>
   );

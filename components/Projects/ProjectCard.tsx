@@ -6,18 +6,18 @@ import { motion } from "motion/react";
 import { IProject } from "@/utils/types";
 
 export default function ProjectCard({ project }: { project: IProject }) {
-  const handleViewDetails = (id: number) => {
+  const handleViewDetails = (id: string) => {
     window.location.href = `/projects/${id}`;
   };
-  console.log({project});
-  
+  console.log({ project });
+
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay:1 * 0.1 }}
+      transition={{ duration: 0.5, delay: 1 * 0.1 }}
       whileHover={{ y: -12 }}
       className="group relative h-full cursor-pointer"
     >
@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: { project: IProject }) {
             <div className="absolute top-0 left-7 right-7 h-[1px] bg-gradient-to-r from-transparent via-[#3BA9FF]/30 to-transparent" />
 
             <h3 className="mb-4 text-[#0a0e1a] tracking-tight leading-tight">
-              {project?.name}
+              {project?.title}
             </h3>
 
             {/* DATE + LOCATION */}
@@ -95,7 +95,7 @@ export default function ProjectCard({ project }: { project: IProject }) {
               </div>
 
               <div
-                onClick={() => handleViewDetails(+project?.id)}
+                onClick={() => handleViewDetails(project?.id)}
                 className="text-xs tracking-wider text-[#00008B]/60 group-hover:text-[#00008B] transition-colors duration-300 uppercase"
               >
                 View Details →
