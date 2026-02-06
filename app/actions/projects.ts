@@ -9,6 +9,8 @@ const COLLECTION_NAME = "projects";
 export async function getProjects(): Promise<IProject[]> {
     try {
         const snapshot = await db.collection(COLLECTION_NAME).orderBy("date", "desc").get();
+        console.log({snapshot});
+        
         return snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),

@@ -9,6 +9,9 @@ if (!getApps().length) {
         privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
     };
 
+    console.log({serviceAccount});
+    
+
     initializeApp({
         credential: cert(serviceAccount as any),
         storageBucket: `timimetal-f30a7.firebasestorage.app`,

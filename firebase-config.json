@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "timimetal-f30a7",
+  "private_key_id": "bb9840c88b6c21b7efd1588f6d4f31568c0a0f29",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCxr8q/UrEpwctC\nHTx9iMqdEAJvXV6MkUHt31J3aJRuazR6thlUb5zNKHKPdEEE50RVhHcBakMdrs49\nOcAi9ogJ8OM7Ycor838II4rPppKdVgECD0AYOQf0txb5Brq6PC2ppyhNHQ38pxez\nc2I9zy4nklaEcXUZRWOXCgDwgB0iu48GK8DzJCqj/mRu4LdZVoe3IIaH2dm/1IGG\n/m3UhilV8L2JsnO+orzhpDUp/HfGoyInoOImMCAfQkc2w7DyXc6lu/A9hVtUZIn6\nrga6VjhvizydqUQ/42f210NJ4yxFJ4y3gDCVY1dJB3xLAD9wb0p9C9Ycd2fdg1IV\nCcWaOcjxAgMBAAECgf9bEdR0l5gO4l0cu1bQi3U+vNYq47w/HFYx26DH1wU6JQ2B\nWJuxiPqOJ0By5wMIKJFU+jpXU3Itn+vBuePiZD5cqTnI5T2q+x+aj/JAEDg+dXve\nBPVplvrg38zLoC/emUdlQ9mqwkz9pAp1kBkpM0in1hJkknaKYnFkckcaDenoRnRk\ngKuQ8eUi9H2uofkiTkbp8oybQHMFwR6h8fu/3d4KbdyEK1EjDyvXU5k6GbNNHZXo\n0YbhZh/ALkdXHvFoXxs9nl1FB6HtnGd0Lt81+eXKsoBcjU7hgO2e0cwhDIhOTIYq\nreJdIBLrUKymyTeT6Tfg8odFsFkFyFNEpBMnI/ECgYEA3OWzoI7POQCp0l4UOUYz\nSGvqjwDZi8Cu5Z23vSyTjYt9lAxjiWeXbrBXjX1UwrhUMvUZbOjNvv5f6vJ5McEd\nPDmDrWb1j1jnU9j6A6pXQbDONZpDqFA2pXA+lGhfPsDuDL6VJiVAP1u9KiRZaX9p\nt+a/+7v3CCS11HhtSOSEjNUCgYEAzew+wP1EUucmEA0es4/jybBqK3qRbi8ZXXcK\nEF8QxV8Z2FHSuY9y6QYXi6HoXVjdNlXFTSIe/lD9/WTY1lmONOVVOFpkQ9LI4M7k\nFDmnu/DYN2WSQU4QxHU2iYB791ws9F69RH8KI5oyHxRJXbIYg9pyVybm1OKPzuta\nJnv2qa0CgYEA22QADZ0IzvKLt/XcXC4OzQTxh2ouppCOpFsKnAZj3hcGeD39tgB+\n9F6L9mjeAC8W4S1xPSvS/LikBzMfj3zfTmtJDrXNebuwtSQw2+cYlpPFmpNGUyqn\nu5RJcxheUHNJerrmY2Zn8wVoUSyc6Ry0oQO69YhwB1R+izG4SMc9pqkCgYEAr92a\n/rGOv4rgDAdYeBxke2UqV3W3bLXW4OcAdljqdtYwuXmwEYA8sFzekQc27zosuvHn\nrmd8ttAvC1Esi2wysmRGMvmn9fC4VJ79VXSkFzOrRSx/Cz0DvvUoHajYtrpHPnEH\nDc+9tghD1B08R0QKAdn3mw0DST8xeJOyC3oFgIUCgYBEcbc6N7l3wIkKpU5CzEkG\nKju8eLmjGN55FjGpk6ue3NMofgwv5IFqmnvY5WR7EvByJ1by32lcJkeUf4vKGbK1\n86OjgKVJaVWf9Hopnr1LgIN80Z9n9Y/tZw96nbrfxmay9wV8AV7D1eA1mID2P5ZA\ni7j5PqNjIqgm3/IexHS5Hw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@timimetal-f30a7.iam.gserviceaccount.com",
+  "client_id": "116156988557764120252",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40timimetal-f30a7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
