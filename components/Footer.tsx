@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="bg-[rgb(3,5,34)] py-16 text-gray-300 px-4">
+    <div className="bg-[#050505] py-16 text-gray-300 px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-10">
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-bold text-white">Timimetal</h1>
@@ -66,7 +66,7 @@ const Footer = () => {
       <hr className="border-gray-800 my-8" />
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 max-w-7xl mx-auto">
-        <p>&copy; 2025 Timimetal, All Rights reserved. </p>
+        <p>&copy; {new Date().getFullYear()} Timimetal, All Rights reserved. </p>
         <div className="flex flex-wrap justify-center gap-6">
           <p>Privacy Policy</p>
           <p>Terms of Service</p>

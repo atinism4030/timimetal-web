@@ -1,5 +1,5 @@
-"use client"
-import { motion } from "motion/react";
+"use client";
+import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 
 interface ContactInfoProps {
@@ -11,34 +11,32 @@ interface ContactInfoProps {
 
 export function ContactInfo({ icon: Icon, title, value, index }: ContactInfoProps) {
   return (
-   <div>
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      whileHover={{ x: 6, scale: 1.02 }}
-      className="group flex items-start gap-4 p-6 rounded-xl bg-gradient-to-br from-[#F3F7FF] to-white border border-[#00008B]/20 hover:border-[#00008B]/50 shadow-sm hover:shadow-lg transition-all duration-300"
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group flex flex-col md:flex-row items-start md:items-center gap-6 py-6 border-b border-gray-200 last:border-0 hover:bg-white transition-colors duration-500 cursor-pointer -mx-4 px-4 sm:-mx-6 sm:px-6"
     >
-      {/* Icon container with premium metallic effect */}
-      <div className="relative shrink-0">
-        <div className="p-3.5 rounded-xl bg-gradient-to-br from-[#00008B]/10 to-[#3BA9FF]/5 border border-[#00008B]/30 group-hover:from-[#00008B]/20 group-hover:to-[#3BA9FF]/10 group-hover:border-[#00008B]/60 transition-all duration-300 shadow-sm">
-          {/* <Icon className="w-5 h-5 text-[#00008B] drop-shadow-[0_0_8px_rgba(0,0,139,0.4)]" /> */}
-        </div>
-        
-        {/* Subtle glow effect */}
-        <div className="absolute inset-0 rounded-xl bg-[#00008B]/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+      {/* Icon container */}
+      <div className="shrink-0 text-gray-400 group-hover:text-gray-900 transition-colors duration-500">
+        <Icon size={24} strokeWidth={1.5} />
       </div>
 
       {/* Text content */}
       <div className="flex-1 min-w-0">
-        <p className="text-sm text-[#5A6675] mb-1.5 tracking-wide">{title}</p>
-        <p className="text-[#0a0e1a] break-words">{value}</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2 font-semibold">
+          {title}
+        </p>
+        <p className="text-gray-900 text-lg md:text-xl font-light tracking-tight break-words">
+          {value}
+        </p>
       </div>
 
-      {/* Accent indicator */}
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-transparent via-[#00008B]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* Hover indicator */}
+      <div className="hidden md:block opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all duration-500 text-gray-300 font-light text-2xl">
+        →
+      </div>
     </motion.div>
-   </div> 
   );
 }

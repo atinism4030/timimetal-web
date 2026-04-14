@@ -19,9 +19,6 @@ import Certificatons from "@/components/About/Certificatons";
 const page = () => {
   return (
     <div className="bg-white h-full">
-      <div>
-        <Header />
-      </div>
       <div className="w-full h-[100vh] bg-blue-100 overflow-hidden flex items-center text-black">
         <motion.div
           className="absolute inset-0 z-0"
@@ -253,11 +250,11 @@ const page = () => {
       <div className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
-          className="text-center mb-20"
-          initial={{opacity:0, y:30}}
-          whileInView={{opacity:1,y:0}}
-          viewport={{once:true}}
-          transition={{duration:0.6}}
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-6 py-2 bg-[#F3F6FB] text-[#2563EB] rounded-full mb-4">Udhetimi Yne</span>
             <h2 className="text-[#1E3A8A] mb-4">Company Journey</h2>

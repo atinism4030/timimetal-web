@@ -8,12 +8,12 @@ const contactDetails = [
   {
     icon: MapPin,
     title: "Visit Us",
-    value: "123 Industrial Park, City, Country",
+    value: "E65 Tetovo MK, 1200",
   },
   {
     icon: Phone,
     title: "Call Us",
-    value: "+1 (555) 123-4567",
+    value: "+389 70 209 553",
   },
   {
     icon: Mail,
@@ -29,26 +29,45 @@ const contactDetails = [
 
 const GetInTouch = () => {
   return (
-    <div className='bg-gray-100 py-16 md:py-24 px-4'>
-      <div className='pb-12 text-center'>
-        <h2 className="text-black text-4xl md:text-6xl font-bold pb-5">Get In Touch</h2>
-        <p className="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto">Ready to start your project? Contact us for a free consultation and quote. Our expert team is here to bring your vision to life.</p>
-      </div>
-
-      <div className='text-black flex flex-col lg:flex-row justify-center gap-12 lg:gap-24 items-start w-full max-w-7xl mx-auto'>
-        <div className="flex flex-col gap-6 w-full lg:w-1/3">
-          {contactDetails.map((details, index) => (
-            <ContactInfo
-              key={index}
-              icon={details.icon}
-              title={details.title}
-              value={details.value}
-              index={index}
-            />
-          ))}
+    <div className='bg-[#fafafa] py-24 md:py-32 px-6 lg:px-20 top-border'>
+      <div className='max-w-[1400px] mx-auto'>
+        <div className='pb-16 text-center max-w-4xl mx-auto'>
+          <h2 className="text-gray-900 text-4xl md:text-5xl lg:text-7xl font-light tracking-tight mb-6">
+            Get In <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-500 to-black">Touch</span>
+          </h2>
+          <div className="h-[1px] w-24 bg-gray-300 mx-auto mb-8" />
+          <p className="text-gray-600 text-lg md:text-xl font-light leading-relaxed">
+            Ready to start your project? Contact us for a free consultation and quote.
+            Our expert team is here to bring your vision to life.
+          </p>
         </div>
-        <div className="w-full lg:w-2/3 flex justify-center lg:justify-start">
-          <RequestQuote />
+
+        <div className='flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 items-start w-full relative'>
+          {/* Decorative Divider */}
+          <div className="hidden lg:block absolute left-[50%] top-0 bottom-0 w-[1px] bg-gray-200 -translate-x-[50%]" />
+
+          <div className="flex flex-col gap-10 w-full lg:w-1/2 lg:pr-12">
+            <div>
+              <h3 className="text-2xl font-medium mb-10 text-gray-900">Contact Information</h3>
+              <div className="flex flex-col gap-8">
+                {contactDetails.map((details, index) => (
+                  <ContactInfo
+                    key={index}
+                    icon={details.icon}
+                    title={details.title}
+                    value={details.value}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full lg:w-1/2 lg:pl-12 flex justify-center lg:justify-start">
+            <div className="w-full bg-white p-8 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100">
+              <RequestQuote />
+            </div>
+          </div>
         </div>
       </div>
     </div>
