@@ -72,7 +72,7 @@ const ProjectsPage = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 max-w-5xl mx-auto">
           {[
-            { value: projectsList.length + "+", label: "Completed Projects" },
+            { value: "150+", label: "Completed Projects" },
             { value: "98%", label: "Client Satisfaction" },
             { value: "25+", label: "Years Experience" },
           ].map((stat, index) => (

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowLeft, Grid3x3, Filter } from "lucide-react";
 import ProjectCard from "./ProjectCard";
+import Link from "next/link";
 
 interface Project {
   id: string;
@@ -13,11 +14,18 @@ interface Project {
   category: string;
 }
 
+const stats = {
+  projects: "150+",
+  satisfaction: "98%",
+  experience: "26+",
+};
 interface AllProjectsProps {
   projects: Project[];
   onBack: () => void;
   onProjectClick: (id: string) => void;
 }
+
+
 
 export function AllProjects({
   projects,
@@ -48,17 +56,19 @@ export function AllProjects({
 
         <div className="max-w-7xl mx-auto px-6 py-20 relative">
           {/* Back Button */}
-          <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#3BA9FF]/20 hover:border-[#3BA9FF]/50 hover:bg-[#F3F7FF] transition-all duration-300 shadow-sm hover:shadow-md mb-12 group"
-          >
-            <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
-            <span className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">
-              Back to Home
-            </span>
-          </motion.button>
+          <Link href="/#projects">
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#3BA9FF]/20 hover:border-[#3BA9FF]/50 hover:bg-[#F3F7FF] transition-all duration-300 shadow-sm hover:shadow-md mb-12 group"
+            >
+              <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
+
+              <span className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">
+                Back to Home
+              </span>
+            </motion.button>
+          </Link>
 
           {/* Header */}
           <motion.div
@@ -97,19 +107,19 @@ export function AllProjects({
           >
             <div className="p-6 rounded-xl bg-gradient-to-br from-[#E8F3FF] to-white border border-[#3BA9FF]/15 shadow-sm text-center">
               <div className="text-4xl mb-2 bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF] bg-clip-text text-transparent">
-                150+
+                {stats.projects}
               </div>
               <div className="text-sm text-[#5A6675]">Completed Projects</div>
             </div>
             <div className="p-6 rounded-xl bg-gradient-to-br from-[#E8F3FF] to-white border border-[#3BA9FF]/15 shadow-sm text-center">
               <div className="text-4xl mb-2 bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF] bg-clip-text text-transparent">
-                98%
+                {stats.satisfaction}
               </div>
               <div className="text-sm text-[#5A6675]">Client Satisfaction</div>
             </div>
             <div className="p-6 rounded-xl bg-gradient-to-br from-[#E8F3FF] to-white border border-[#3BA9FF]/15 shadow-sm text-center">
               <div className="text-4xl mb-2 bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF] bg-clip-text text-transparent">
-                25+
+                {stats.experience}
               </div>
               <div className="text-sm text-[#5A6675]">Years Experience</div>
             </div>

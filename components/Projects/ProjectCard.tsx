@@ -44,14 +44,7 @@ export default function ProjectCard({ project }: { project: IProject }) {
 
             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent opacity-60" />
 
-            <motion.div
-              whileHover={{ scale: 1.15, rotate: 8 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="absolute top-5 right-5 p-4 rounded-xl bg-white/95 backdrop-blur-md shadow-xl border border-[#00008B]/30 group-hover:border-[#00008B]/60 transition-all duration-300"
-            >
-              {/* ICON */}
-              {/* <project.icon className="w-6 h-6 text-[#00008B]" /> */}
-            </motion.div>
+
 
             <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#00008B] to-transparent opacity-70" />
           </div>

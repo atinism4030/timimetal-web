@@ -16,7 +16,7 @@ const ProjectsHome = async () => {
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1] mb-6 whitespace-nowrap">
               Selected <br />
-              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-600">
                 Masterpieces
               </span>
             </h2>

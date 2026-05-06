@@ -24,7 +24,7 @@ const TimeLineItem = ({
           initial={{ scale: 0.8 }}
           animate={isInView ? { scale: 1 } : { scale: 0.8 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`${isEven ? "text-right" : "order-2"}`}
+          className={isEven ? "text-right pr-8" : ""}
         >
           {isEven && (
             <div className="pr-8">
@@ -72,7 +72,7 @@ const TimeLineItem = ({
               : { opacity: 0, x: isEven ? 50 : -50 }
           }
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`${!isEven ? "text-left" : "order-1"}`}
+          className={!isEven ? "pl-8" : ""}
         >
           {!isEven && (
             <div className="pl-8">
