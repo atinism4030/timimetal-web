@@ -13,9 +13,9 @@ export interface IProject {
   location: string;
   category: string;
   client?: string;
-  challenges?: string[];
-  solutions?: string[];
-  results?: string[];
+  challenges?: string;
+  solutions?: string;
+  results?: string;
   duration?: string;
   fullDescription?: string;
 

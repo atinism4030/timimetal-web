@@ -3,29 +3,35 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import Image from "next/image";
 
+
 interface ImageGalleryProps {
   images: string[];
 }
 
 export function ImageGallery({ images }: any) {
+const parsedImages = Array.isArray(images)
+  ? images.filter(Boolean)
+  : typeof images === "string"
+  ? JSON.parse(images).filter(Boolean)
+  : [];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   console.log({images});
   
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images?.length);
+    setCurrentIndex((prev) => (prev + 1) % parsedImages?.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + images?.length) % images?.length);
+    setCurrentIndex((prev) => (prev - 1 + parsedImages?.length) % parsedImages?.length);
   };
 
   // Get 3 visible images (previous, current, next)
   const getVisibleImages = () => {
     const visible = [];
     for (let i = -1; i <= 1; i++) {
-      const index = (currentIndex + i + images?.length) % images?.length;
-      visible.push({ image: images?.[index], index, position: i });
+      const index = (currentIndex + i + parsedImages?.length) % parsedImages?.length;
+      visible.push({ image: parsedImages?.[index], index, position: i });
     }
     return visible;
   };
@@ -65,7 +71,7 @@ export function ImageGallery({ images }: any) {
                       key={currentIndex}
                       width={500}
                       height={500}
-                        src={image}
+                        src={image || undefined}
                         alt={`Gallery image ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
@@ -115,7 +121,7 @@ export function ImageGallery({ images }: any) {
 
         {/* Indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {images?.map((_, index) => (
+          {parsedImages?.map((_: any, index: number) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
@@ -162,7 +168,7 @@ export function ImageGallery({ images }: any) {
                 <Image
                           width={500}
                       height={500}
-                  src={zoomedImage}
+                  src={images || undefined}
                   alt="Zoomed image"
                   className="max-w-full max-h-[90vh] object-contain bg-white rounded-2xl"
                 />

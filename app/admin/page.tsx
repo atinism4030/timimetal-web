@@ -94,7 +94,7 @@ export default function AdminDashboard() {
                                 <div className="w-full md:w-40 h-28 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100 relative">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
-                                        src={project.image}
+                                        src={project.image || undefined}
                                         alt={project.title}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                     />

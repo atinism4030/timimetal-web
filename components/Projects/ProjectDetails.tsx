@@ -102,14 +102,9 @@ export function ProjectDetails({ project }: { project: IProject }) {
               </div>
             </div>
             <h3 className="text-[#0a0e1a]">Technical Challenges</h3>
-            <ul className="space-y-4">
-              {project?.challenges?.map((challenge, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3BA9FF] flex-shrink-0" />
-                  <p className="text-[#5A6675] leading-relaxed">{challenge}</p>
-                </li>
-              ))}
-            </ul>
+            <p className="text-[#5A6675] leading-relaxed">
+              {project?.challenges}
+            </p>
           </motion.div>
 
           {/* Solutions */}
@@ -125,18 +120,9 @@ export function ProjectDetails({ project }: { project: IProject }) {
               </div>
             </div>
             <h3 className="text-[#0a0e1a]">Our Approach</h3>
-            <ul className="space-y-4">
-              {project?.solutions?.map((solution, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="mt-1.5">
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#3BA9FF]/20 to-[#6FB7FF]/10 border border-[#3BA9FF]/30 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs text-[#3BA9FF]">{index + 1}</span>
-                    </div>
-                  </div>
-                  <p className="text-[#5A6675] leading-relaxed">{solution}</p>
-                </li>
-              ))}
-            </ul>
+          <p className="text-[#5A6675] leading-relaxed">
+            {project?.solutions}
+          </p>
           </motion.div>
 
           {/* Results */}
@@ -152,15 +138,11 @@ export function ProjectDetails({ project }: { project: IProject }) {
               </div>
             </div>
             <h3 className="text-[#0a0e1a]">Project Outcomes</h3>
-            <div className="space-y-4">
-              {project?.results?.map((result, index) => (
-                <div key={index} className="p-5 rounded-xl bg-gradient-to-br from-[#E8F3FF] to-white border border-[#3BA9FF]/15 shadow-sm">
-                  <p className="text-[#5A6675] leading-relaxed">{result}</p>
-                </div>
-              ))}
-            </div>
+          <p className="text-[#5A6675] leading-relaxed">
+            {project?.results}
+          </p>
           </motion.div>
-        </div>
+      </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

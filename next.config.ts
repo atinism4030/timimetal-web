@@ -12,6 +12,13 @@ const nextConfig = {
   },
   images: {
     domains: ["images.unsplash.com", "firebasestorage.googleapis.com"],
+    remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "sbgxfbzkyvzskdzgsdpe.supabase.co",
+    },
+    ]
+
   },
 };
 

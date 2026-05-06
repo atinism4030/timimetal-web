@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: { project: IProject }) {
               <Image
                 width={500}
                 height={500}
-                src={project?.image}
+                src={project?.image || "/placeholder.jpg"}
                 alt={project?.title!}
                 className="w-full h-full object-cover"
               />
