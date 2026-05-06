@@ -4,10 +4,13 @@ import Image from "next/image";
 import LogoImg from "@/public/Logo timimetal.png";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +21,11 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (pathname.startsWith("/admin") || (pathname.startsWith("/login"))) {
+  return null;
+}
+
 
   return (
     <nav className={`fixed top-0 left-0 w-full h-[80px] z-[100] transition-all duration-500 ease-in-out ${

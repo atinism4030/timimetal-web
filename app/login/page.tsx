@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabaseAuth } from "@/lib/supabase-auth";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function LoginPage() {
 
@@ -35,6 +37,15 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F8FAFB] px-6">
+                <div className="mb-12">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:text-blue-600 hover:border-blue-200 hover:shadow-sm transition-all text-sm font-medium"
+          >
+            <ArrowLeft size={16} />
+            Back to Home
+          </Link>
+        </div>
 
       <form
         onSubmit={handleLogin}

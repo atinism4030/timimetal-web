@@ -31,13 +31,6 @@ const handleLogout = async () => {
   
 
 useEffect(() => {
-        const timeout = setTimeout(async () => {
-
-  await supabaseAuth.auth.signOut();
-
-  router.replace("/login");
-
-}, 15 * 60 * 1000);
 
   const checkSession = async () => {
 
@@ -73,7 +66,6 @@ useEffect(() => {
   );
 
   return () => {
-    clearTimeout(timeout);
     authListener.subscription.unsubscribe();
   };
 

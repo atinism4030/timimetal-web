@@ -1,11 +1,20 @@
+"use client"
 import React from "react";
 import PhoneIcon from "@/public/GetInTouchIcons/phone-call 1.png";
 import MailIcon from "@/public/GetInTouchIcons/mail 1.png";
 import LocationIcon from "@/public/GetInTouchIcons/pin 1.png";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 
 const Footer = () => {
+  const pathname = usePathname();
+
+if (pathname.startsWith("/admin") || (pathname.startsWith("/login"))) {
+  return null;
+}
   return (
+    
     <footer className="relative overflow-hidden bg-[#030712] border-t border-white/10">
       
       {/* Background Glow */}
