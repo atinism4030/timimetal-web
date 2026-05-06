@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import WeldingImage from "@/public/Image (Welding metal construction with sparks).png";
+import Link from "next/link";
 
 const metrics = [
   { value: "25+", label: "Years Experience" },
@@ -54,12 +55,16 @@ const AboutSection = () => {
             ))}
           </div>
 
-          <div className="pt-4">
-             <button className="bg-[#050505] text-white px-10 py-5 text-sm uppercase tracking-widest font-semibold transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex items-center gap-4 group rounded-none">
-               Discover Our Legacy
-               <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
-             </button>
-          </div>
+<div className="pt-4">
+  <Link href="/about-us">
+    <button className="bg-[#050505] text-white px-10 py-5 text-sm uppercase tracking-widest font-semibold transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex items-center gap-4 group rounded-none">
+      Discover Our Legacy
+      <span className="group-hover:translate-x-2 transition-transform duration-300">
+        →
+      </span>
+    </button>
+  </Link>
+</div>
         </div>
 
       </div>

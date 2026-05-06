@@ -52,7 +52,7 @@ const Header = () => {
               <Link href="/projects" className="hover:opacity-70 transition duration-300">Projects</Link>
             </li>
             <li>
-              <Link href="#contact" className="hover:opacity-70 transition duration-300">Contacts</Link>
+              <Link href="/#GetInTouch" className="hover:opacity-70 transition duration-300">Contacts</Link>
             </li>
           </ul>
         </div>

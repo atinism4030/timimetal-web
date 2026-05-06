@@ -29,7 +29,8 @@ const contactDetails = [
 
 const GetInTouch = () => {
   return (
-    <div className='bg-[#fafafa] py-24 md:py-32 px-6 lg:px-20 top-border'>
+    
+    <div id="GetInTouch" className=' scroll-mt-24 bg-[#fafafa] py-24 md:py-32 px-6 lg:px-20 top-border'>
       <div className='max-w-[1400px] mx-auto'>
         <div className='pb-16 text-center max-w-4xl mx-auto'>
           <h2 className="text-gray-900 text-4xl md:text-5xl lg:text-7xl font-light tracking-tight mb-6">

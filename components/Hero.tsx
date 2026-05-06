@@ -38,7 +38,7 @@ export default function HeroVideo() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
       </motion.div>
 
-      <div className="relative z-10 w-full h-full flex flex-col justify-center pb-20 lg:pb-32 px-6 md:px-12 lg:px-20 mx-auto">
+      <div className="relative z-10 w-full h-full flex flex-col justify-center pb-20 lg:pb-1 px-6 md:px-12 lg:px-20 mx-auto">
         <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-12">
 
           <motion.div
@@ -60,7 +60,7 @@ export default function HeroVideo() {
 
             <h1 className="text-white font-light text-5xl md:text-7xl lg:text-[6rem] leading-[1.05] tracking-tight">
               Timimetal <br />
-              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500">
                 Structures
               </span>
             </h1>
