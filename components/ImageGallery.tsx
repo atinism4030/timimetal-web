@@ -3,34 +3,36 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import Image from "next/image";
 
-
 interface ImageGalleryProps {
   images: string[];
 }
 
 export function ImageGallery({ images }: any) {
-const parsedImages = Array.isArray(images)
-  ? images.filter(Boolean)
-  : typeof images === "string"
-  ? JSON.parse(images).filter(Boolean)
-  : [];
+  const parsedImages = Array.isArray(images)
+    ? images.filter(Boolean)
+    : typeof images === "string"
+      ? JSON.parse(images).filter(Boolean)
+      : [];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
-  console.log({images});
-  
+  console.log({ images });
+
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % parsedImages?.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + parsedImages?.length) % parsedImages?.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + parsedImages?.length) % parsedImages?.length,
+    );
   };
 
   // Get 3 visible images (previous, current, next)
   const getVisibleImages = () => {
     const visible = [];
     for (let i = -1; i <= 1; i++) {
-      const index = (currentIndex + i + parsedImages?.length) % parsedImages?.length;
+      const index =
+        (currentIndex + i + parsedImages?.length) % parsedImages?.length;
       visible.push({ image: parsedImages?.[index], index, position: i });
     }
     return visible;
@@ -56,11 +58,11 @@ const parsedImages = Array.isArray(images)
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="absolute"
               >
-                <div 
+                <div
                   className={`relative rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer group ${
-                    position === 0 
-                      ? 'w-[750px] h-[500px] shadow-2xl' 
-                      : 'w-[600px] h-[400px] shadow-xl'
+                    position === 0
+                      ? "w-[750px] h-[500px] shadow-2xl"
+                      : "w-[600px] h-[400px] shadow-xl"
                   }`}
                   onClick={() => position === 0 && setZoomedImage(image)}
                 >
@@ -68,14 +70,14 @@ const parsedImages = Array.isArray(images)
                   <div className="absolute inset-0 p-[2px] bg-gradient-to-br from-[#3BA9FF]/50 via-[#6FB7FF]/30 to-[#3BA9FF]/50 rounded-2xl">
                     <div className="relative w-full h-full bg-white rounded-2xl overflow-hidden">
                       <Image
-                      key={currentIndex}
-                      width={500}
-                      height={500}
-                        src={image || undefined}
+                        key={currentIndex}
+                        width={500}
+                        height={500}
+                        src={images[currentIndex] || undefined}
                         alt={`Gallery image ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
-                      
+
                       {/* Hover overlay for center image */}
                       {position === 0 && (
                         <motion.div
@@ -127,8 +129,8 @@ const parsedImages = Array.isArray(images)
               onClick={() => setCurrentIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? 'w-8 bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF]'
-                  : 'w-2 bg-[#3BA9FF]/30 hover:bg-[#3BA9FF]/50'
+                  ? "w-8 bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF]"
+                  : "w-2 bg-[#3BA9FF]/30 hover:bg-[#3BA9FF]/50"
               }`}
               aria-label={`Go to image ${index + 1}`}
             />
@@ -166,9 +168,9 @@ const parsedImages = Array.isArray(images)
             >
               <div className="relative p-[2px] bg-gradient-to-br from-[#3BA9FF] via-[#6FB7FF] to-[#3BA9FF]">
                 <Image
-                          width={500}
-                      height={500}
-                  src={images || undefined}
+                  width={500}
+                  height={500}
+                  src={images[currentIndex] || undefined}
                   alt="Zoomed image"
                   className="max-w-full max-h-[90vh] object-contain bg-white rounded-2xl"
                 />
