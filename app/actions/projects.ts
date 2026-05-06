@@ -92,11 +92,11 @@ for (const file of files) {
 
   if (file.size > 0) {
 
-    const cleanFileName = file.name
+const cleanFileName = file.name
   .replace(/\s+/g, "-")
   .replace(/[^a-zA-Z0-9.-]/g, "");
 
-const fileName = `projects/${Date.now()}-${cleanFileName}`;
+const fileName = `${Date.now()}-${cleanFileName}`;
 
     const { error } = await supabase.storage
       .from("projects")
