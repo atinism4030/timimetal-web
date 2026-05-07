@@ -40,7 +40,6 @@ export default function HeroVideo() {
 
       <div className="relative z-10 w-full h-full flex flex-col justify-center pb-20 lg:pb-1 px-6 md:px-12 lg:px-20 mx-auto">
         <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-12">
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVideoLoaded ? { opacity: 1, y: 0 } : {}}
@@ -51,7 +50,11 @@ export default function HeroVideo() {
               <motion.p
                 initial={{ y: "100%" }}
                 animate={isVideoLoaded ? { y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.4,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 className="text-white/70 uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-2 ml-1"
               >
                 Pioneering the Future of Steel
@@ -88,21 +91,15 @@ export default function HeroVideo() {
               href="#projects"
               className="group flex justify-between items-center gap-6 bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 hover:border-white/30 text-white px-8 py-4 rounded-full transition-all duration-300"
             >
-              <span className="text-sm font-medium tracking-wide">View Projects</span>
+              <span className="text-sm font-medium tracking-wide">
+                View Projects
+              </span>
+
               <div className="bg-white text-black p-2 rounded-full group-hover:translate-x-1 transition-transform">
                 <ArrowRight size={16} />
               </div>
             </a>
-
-            <a
-              href="#contact"
-              className="relative overflow-hidden group flex justify-center items-center gap-2 bg-white text-black px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
-            >
-              <span className="relative z-10 text-sm font-semibold tracking-wide">Get Free Quote</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
           </motion.div>
-
         </div>
       </div>
 
@@ -113,7 +110,9 @@ export default function HeroVideo() {
         transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-white/40 text-[10px] uppercase tracking-widest hidden md:block">Scroll</span>
+        <span className="text-white/40 text-[10px] uppercase tracking-widest hidden md:block">
+          Scroll
+        </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

@@ -1,7 +1,6 @@
 "use client";
 import React from 'react'
 import { ContactInfo } from './ContactInfo'
-import RequestQuote from './RequestQuote'
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const contactDetails = [
@@ -64,11 +63,37 @@ const GetInTouch = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 lg:pl-12 flex justify-center lg:justify-start">
-            <div className="w-full bg-white p-8 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100">
-              <RequestQuote />
-            </div>
-          </div>
+<div className="w-full lg:w-1/2 lg:pl-12 flex justify-center lg:justify-start">
+
+  <div className="w-full bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
+
+    <div className="p-8 border-b border-gray-100">
+      <p className="text-xs tracking-[0.2em] font-semibold text-gray-400 uppercase mb-3">
+        Location
+      </p>
+
+      <h2 className="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">
+        Visit Timimetal
+      </h2>
+    </div>
+
+    <div className="w-full h-[500px]">
+
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.2220458140087!2d20.95112197627505!3d41.97404217123135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353fbe42793fa5b%3A0x94867af64a7470e5!2sTimimetal!5e0!3m2!1sen!2smk!4v1778153651471!5m2!1sen!2smk"
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  className="w-full h-full"
+/>
+
+    </div>
+
+  </div>
+</div>
         </div>
       </div>
     </div>

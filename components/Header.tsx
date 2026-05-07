@@ -99,16 +99,28 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="hidden lg:block">
-          <button
-            className={`px-8 py-3 text-xs tracking-widest font-semibold uppercase transition duration-500 ${
+        <div className="hidden lg:block relative">
+          <select
+            className={`appearance-none px-8 py-3 pr-14 text-xs tracking-widest font-semibold uppercase transition duration-500 outline-none cursor-pointer rounded-full ${
               isScrolled
-                ? "bg-[#050505] text-white hover:bg-black hover:shadow-2xl hover:-translate-y-0.5"
-                : "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-black hover:-translate-y-0.5"
+                ? "bg-[#050505] text-white hover:bg-black hover:shadow-2xl"
+                : "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-black"
             }`}
           >
-            Get Quote
-          </button>
+            <option value="en">🇬🇧 English</option>
+            <option value="sq">🇦🇱 Shqip</option>
+            <option value="mk">🇲🇰 Македонски</option>
+            <option value="de">🇩🇪 Deutsch</option>
+          </select>
+
+          {/* Arrow */}
+          <div
+            className={`pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[10px] ${
+              isScrolled ? "text-white" : "text-white"
+            }`}
+          >
+            ▼
+          </div>
         </div>
 
         {/* Mobile Toggle */}
@@ -154,9 +166,12 @@ const Header = () => {
               ))}
 
               <div className="p-5 pt-6">
-                <button className="w-full bg-[#050505] text-white rounded-2xl py-4 text-[12px] tracking-[0.18em] uppercase font-semibold shadow-xl hover:scale-[1.02] transition-all duration-300">
-                  Get Quote
-                </button>
+                <select className="w-full bg-[#050505] text-white rounded-2xl py-4 px-5 text-[12px] tracking-[0.18em] uppercase font-semibold shadow-xl hover:scale-[1.02] transition-all duration-300 outline-none cursor-pointer appearance-none">
+                  <option value="en">🇬🇧 English</option>
+                  <option value="sq">🇦🇱 Shqip</option>
+                  <option value="mk">🇲🇰 Македонски</option>
+                  <option value="de">🇩🇪 Deutsch</option>
+                </select>
               </div>
             </div>
           </div>
