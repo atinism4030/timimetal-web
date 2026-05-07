@@ -23,12 +23,16 @@ export default function ProjectFormPage({
   params: Promise<{ id: string }>;
 }) {
   const [authorized, setAuthorized] = useState(false);
+
   const router = useRouter();
+
   const { id: projectId } = use(params);
+
   const isNew = projectId === "new";
 
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
+
   const [project, setProject] = useState<Partial<IProject>>({
     title: "",
     description: "",
@@ -56,7 +60,6 @@ export default function ProjectFormPage({
 
       if (!session) {
         router.replace("/login");
-
         return;
       }
 
@@ -73,40 +76,59 @@ export default function ProjectFormPage({
           setProject(data);
           setExistingImages(data.images || []);
         }
+
         setLoading(false);
       });
     }
   }, [projectId, isNew]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
+
       setSelectedImages((prev) => [...prev, ...files]);
 
-      const newPreviews = files.map((file) => URL.createObjectURL(file));
+      const newPreviews = files.map((file) =>
+        URL.createObjectURL(file)
+      );
+
       setImagePreviews((prev) => [...prev, ...newPreviews]);
     }
   };
 
   const removeNewImage = (index: number) => {
-    setSelectedImages((prev) => prev.filter((_, i) => i !== index));
-    setImagePreviews((prev) => prev.filter((_, i) => i !== index));
+    setSelectedImages((prev) =>
+      prev.filter((_, i) => i !== index)
+    );
+
+    setImagePreviews((prev) =>
+      prev.filter((_, i) => i !== index)
+    );
   };
 
   const removeExistingImage = (url: string) => {
-    setExistingImages((prev) => prev.filter((img) => img !== url));
+    setExistingImages((prev) =>
+      prev.filter((img) => img !== url)
+    );
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setSaving(true);
 
     const formData = new FormData();
+
     if (!isNew) formData.append("id", projectId);
 
     formData.append("title", project.title || "");
     formData.append("description", project.description || "");
-    formData.append("fullDescription", project.fullDescription || "");
+    formData.append(
+      "fullDescription",
+      project.fullDescription || ""
+    );
     formData.append("date", project.date || "");
     formData.append("location", project.location || "");
     formData.append("client", project.client || "");
@@ -115,10 +137,12 @@ export default function ProjectFormPage({
     formData.append("challenges", project.challenges || "");
     formData.append("solutions", project.solutions || "");
     formData.append("results", project.results || "");
-    formData.append("category", project.category || "");
 
-    formData.append("existingImages", JSON.stringify(existingImages));
-    console.log("SELECTED IMAGES:", selectedImages);
+    formData.append(
+      "existingImages",
+      JSON.stringify(existingImages)
+    );
+
     for (const file of selectedImages) {
       formData.append("images", file);
     }
@@ -129,15 +153,21 @@ export default function ProjectFormPage({
       router.push("/admin");
     } else {
       console.log(res.error);
+
       alert("Error saving project: " + res.error);
+
       setSaving(false);
     }
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center bg-[#F8FAFB]">
-        <Loader2 className="animate-spin text-[#3BA9FF]" size={40} />
+      <div className="min-h-screen flex justify-center items-center bg-[#F7F8FA]">
+
+        <Loader2
+          className="animate-spin text-[#3BA9FF]"
+          size={42}
+        />
       </div>
     );
   }
@@ -145,47 +175,86 @@ export default function ProjectFormPage({
   if (!authorized) {
     return null;
   }
+
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white py-12 px-6">
-      <div className="max-w-5xl mx-auto">
-        {/* Back */}
+    <div className="relative min-h-screen overflow-hidden bg-[#F7F8FA] py-14 px-6">
+
+      {/* GRID */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:90px_90px]" />
+
+      {/* GLOWS */}
+      <div className="absolute top-[-250px] left-[-200px] w-[650px] h-[650px] bg-[#3BA9FF]/10 blur-3xl rounded-full pointer-events-none" />
+
+      <div className="absolute bottom-[-250px] right-[-200px] w-[650px] h-[650px] bg-black/[0.04] blur-3xl rounded-full pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto relative z-10">
+
+        {/* BACK */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-10 group"
+          className="group inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white border border-black/5 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.12)] transition-all duration-500 mb-10"
         >
-          <ArrowLeft
-            size={18}
-            className="group-hover:-translate-x-1 transition-transform"
-          />
-          Back to Dashboard
+
+          <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
+
+          <span className="text-sm text-[#5A6675] group-hover:text-[#111111] transition-colors duration-300">
+            Back to Dashboard
+          </span>
         </Link>
 
-        {/* Main Card */}
-        <div className="bg-[#121212] border border-white/10 rounded-[32px] overflow-hidden shadow-[0_20px_80px_-25px_rgba(0,0,0,0.8)]">
-          {/* Header */}
-          <div className="px-10 py-10 border-b border-white/10 bg-white/[0.02]">
-            <div className="flex items-center gap-2 text-[#3BA9FF] mb-3">
-              <Layout size={18} />
-              <span className="text-xs uppercase tracking-[0.2em] font-semibold">
+        {/* MAIN CARD */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden bg-white rounded-[36px] border border-black/5 shadow-[0_30px_90px_-30px_rgba(0,0,0,0.12)]"
+        >
+
+          {/* INNER GRID */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#3BA9FF_1px,transparent_1px),linear-gradient(to_bottom,#3BA9FF_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+          {/* GLOW */}
+          <div className="absolute top-[-120px] right-[-120px] w-[260px] h-[260px] bg-[#3BA9FF]/10 blur-3xl rounded-full" />
+
+          {/* HEADER */}
+          <div className="relative z-10 px-10 md:px-12 py-10 border-b border-black/5">
+
+            {/* BADGE */}
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 border border-blue-100 mb-6">
+
+              <Layout size={16} className="text-[#3BA9FF]" />
+
+              <span className="text-[11px] uppercase tracking-[0.22em] text-[#3BA9FF] font-semibold">
                 Timimetal CMS
               </span>
             </div>
 
-            <h1 className="text-4xl font-semibold tracking-tight mb-3">
-              {isNew ? "Create New Project" : "Edit Project"}
+            {/* TITLE */}
+            <h1 className="text-[#111111] text-5xl font-semibold tracking-[-0.05em] mb-4">
+              {isNew
+                ? "Create New Project"
+                : "Edit Project"}
             </h1>
 
-            <p className="text-gray-400 text-lg">
+            {/* TEXT */}
+            <p className="text-gray-500 text-lg leading-relaxed">
               Manage your portfolio projects professionally.
             </p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="p-10 space-y-10">
-            {/* Inputs */}
+          {/* FORM */}
+          <form
+            onSubmit={handleSubmit}
+            className="relative z-10 p-10 md:p-12 space-y-10"
+          >
+
+            {/* INPUTS */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              {/* TITLE */}
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
+
+                <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
                   Project Title
                 </label>
 
@@ -199,13 +268,15 @@ export default function ProjectFormPage({
                       title: e.target.value,
                     })
                   }
-                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  className="w-full h-[62px] px-6 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white transition-all duration-300 text-[#111111]"
                   placeholder="Industrial Steel Construction"
                 />
               </div>
 
+              {/* CATEGORY */}
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
+
+                <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
                   Category
                 </label>
 
@@ -219,13 +290,15 @@ export default function ProjectFormPage({
                       category: e.target.value,
                     })
                   }
-                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  className="w-full h-[62px] px-6 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white transition-all duration-300 text-[#111111]"
                   placeholder="Metal Fabrication"
                 />
               </div>
 
+              {/* DATE */}
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
+
+                <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
                   Date / Period
                 </label>
 
@@ -239,13 +312,15 @@ export default function ProjectFormPage({
                       date: e.target.value,
                     })
                   }
-                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  className="w-full h-[62px] px-6 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white transition-all duration-300 text-[#111111]"
                   placeholder="September 2025"
                 />
               </div>
 
+              {/* LOCATION */}
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
+
+                <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
                   Location
                 </label>
 
@@ -259,13 +334,15 @@ export default function ProjectFormPage({
                       location: e.target.value,
                     })
                   }
-                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  className="w-full h-[62px] px-6 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white transition-all duration-300 text-[#111111]"
                   placeholder="Tetovo, North Macedonia"
                 />
               </div>
 
+              {/* CLIENT */}
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
+
+                <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
                   Client
                 </label>
 
@@ -278,13 +355,15 @@ export default function ProjectFormPage({
                       client: e.target.value,
                     })
                   }
-                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  className="w-full h-[62px] px-6 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white transition-all duration-300 text-[#111111]"
                   placeholder="Client Name"
                 />
               </div>
 
+              {/* DURATION */}
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
+
+                <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
                   Duration
                 </label>
 
@@ -297,186 +376,172 @@ export default function ProjectFormPage({
                       duration: e.target.value,
                     })
                   }
-                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  className="w-full h-[62px] px-6 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white transition-all duration-300 text-[#111111]"
                   placeholder="8 Months"
                 />
               </div>
             </div>
 
-            {/* Textareas */}
+            {/* TEXTAREAS */}
             <div className="space-y-8">
-              <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
-                  Short Description
-                </label>
 
-                <textarea
-                  rows={3}
-                  required
-                  value={project.description}
-                  onChange={(e) =>
-                    setProject({
-                      ...project,
-                      description: e.target.value,
-                    })
-                  }
-                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
-                  placeholder="Project overview..."
-                />
-              </div>
+              {[
+                {
+                  label: "Short Description",
+                  key: "description",
+                  rows: 3,
+                  placeholder: "Project overview...",
+                },
+                {
+                  label: "Full Description",
+                  key: "fullDescription",
+                  rows: 6,
+                  placeholder:
+                    "Detailed project description...",
+                },
+                {
+                  label: "Technical Challenges",
+                  key: "challenges",
+                  rows: 4,
+                  placeholder:
+                    "Describe technical challenges...",
+                },
+                {
+                  label: "Solutions",
+                  key: "solutions",
+                  rows: 4,
+                  placeholder: "Describe solutions...",
+                },
+                {
+                  label: "Results",
+                  key: "results",
+                  rows: 4,
+                  placeholder: "Describe project results...",
+                },
+              ].map((field) => (
 
-              <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
-                  Full Description
-                </label>
+                <div
+                  key={field.key}
+                  className="space-y-3"
+                >
 
-                <textarea
-                  rows={6}
-                  required
-                  value={project.fullDescription}
-                  onChange={(e) =>
-                    setProject({
-                      ...project,
-                      fullDescription: e.target.value,
-                    })
-                  }
-                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
-                  placeholder="Detailed project description..."
-                />
-              </div>
+                  <label className="text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
+                    {field.label}
+                  </label>
 
-              <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
-                  Technical Challenges
-                </label>
-
-                <textarea
-                  rows={4}
-                  value={project.challenges || ""}
-                  onChange={(e) =>
-                    setProject({
-                      ...project,
-                      challenges: e.target.value,
-                    })
-                  }
-                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
-                  placeholder="Describe technical challenges..."
-                />
-              </div>
-
-              <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
-                  Solutions
-                </label>
-
-                <textarea
-                  rows={4}
-                  value={project.solutions || ""}
-                  onChange={(e) =>
-                    setProject({
-                      ...project,
-                      solutions: e.target.value,
-                    })
-                  }
-                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
-                  placeholder="Describe solutions..."
-                />
-              </div>
-
-              <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-300">
-                  Results
-                </label>
-
-                <textarea
-                  rows={4}
-                  value={project.results || ""}
-                  onChange={(e) =>
-                    setProject({
-                      ...project,
-                      results: e.target.value,
-                    })
-                  }
-                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
-                  placeholder="Describe project results..."
-                />
-              </div>
+                  <textarea
+                    rows={field.rows}
+                    value={
+                      (project as any)[field.key] || ""
+                    }
+                    onChange={(e) =>
+                      setProject({
+                        ...project,
+                        [field.key]: e.target.value,
+                      })
+                    }
+                    className="w-full px-6 py-5 rounded-2xl bg-[#F7F8FA] border border-black/5 outline-none focus:border-[#3BA9FF] focus:bg-white resize-none transition-all duration-300 text-[#111111]"
+                    placeholder={field.placeholder}
+                  />
+                </div>
+              ))}
             </div>
 
-            {/* Images */}
+            {/* IMAGES */}
             <div className="space-y-5">
-              <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                <ImageIcon size={18} className="text-[#3BA9FF]" />
+
+              <label className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-gray-500 font-semibold">
+
+                <ImageIcon
+                  size={16}
+                  className="text-[#3BA9FF]"
+                />
+
                 Project Images
               </label>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {/* Existing Images */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+
+                {/* EXISTING */}
                 {existingImages.map((url, index) => (
+
                   <div
                     key={`existing-${index}`}
-                    className="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#181818]"
+                    className="group relative aspect-square rounded-[24px] overflow-hidden border border-black/5 bg-[#F7F8FA]"
                   >
+
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={url}
                       alt="Project"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
 
                     <button
                       type="button"
-                      onClick={() => removeExistingImage(url)}
-                      className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      onClick={() =>
+                        removeExistingImage(url)
+                      }
+                      className="absolute top-3 right-3 w-9 h-9 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                     >
-                      <X size={14} />
+
+                      <X size={15} />
                     </button>
 
                     {index === 0 && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF] text-white text-[10px] py-1 text-center font-bold tracking-wider">
-                        MAIN IMAGE
+
+                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF] text-white text-[10px] py-1.5 text-center font-bold tracking-[0.18em] uppercase">
+                        Main Image
                       </div>
                     )}
                   </div>
                 ))}
 
-                {/* New Previews */}
+                {/* PREVIEWS */}
                 {imagePreviews.map((url, index) => (
+
                   <div
                     key={`new-${index}`}
-                    className="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#181818]"
+                    className="group relative aspect-square rounded-[24px] overflow-hidden border border-black/5 bg-[#F7F8FA]"
                   >
+
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={url}
                       alt="Preview"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
 
                     <button
                       type="button"
-                      onClick={() => removeNewImage(index)}
-                      className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      onClick={() =>
+                        removeNewImage(index)
+                      }
+                      className="absolute top-3 right-3 w-9 h-9 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                     >
-                      <X size={14} />
+
+                      <X size={15} />
                     </button>
 
-                    {existingImages.length === 0 && index === 0 && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF] text-white text-[10px] py-1 text-center font-bold tracking-wider">
-                        MAIN IMAGE
-                      </div>
-                    )}
+                    {existingImages.length === 0 &&
+                      index === 0 && (
+
+                        <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF] text-white text-[10px] py-1.5 text-center font-bold tracking-[0.18em] uppercase">
+                          Main Image
+                        </div>
+                      )}
                   </div>
                 ))}
 
-                {/* Upload */}
-                <label className="flex flex-col items-center justify-center aspect-square rounded-2xl border border-dashed border-white/10 bg-[#181818] hover:border-[#3BA9FF]/50 hover:bg-[#1E1E1E] transition-all cursor-pointer group">
+                {/* UPLOAD */}
+                <label className="group flex flex-col items-center justify-center aspect-square rounded-[24px] border border-dashed border-black/10 bg-[#F7F8FA] hover:border-[#3BA9FF]/40 hover:bg-white transition-all duration-300 cursor-pointer">
+
                   <Upload
-                    size={28}
-                    className="text-[#3BA9FF] mb-3 group-hover:scale-110 transition-transform"
+                    size={30}
+                    className="text-[#3BA9FF] mb-4 group-hover:scale-110 transition-transform duration-300"
                   />
 
-                  <span className="text-xs font-medium text-gray-300">
+                  <span className="text-sm text-gray-500 font-medium">
                     Upload Images
                   </span>
 
@@ -492,11 +557,12 @@ export default function ProjectFormPage({
               </div>
             </div>
 
-            {/* Buttons */}
-            <div className="pt-8 border-t border-white/10 flex justify-end gap-4">
+            {/* BUTTONS */}
+            <div className="pt-8 border-t border-black/5 flex flex-wrap justify-end gap-4">
+
               <Link
                 href="/admin"
-                className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white transition-all font-medium"
+                className="px-8 py-4 rounded-2xl bg-[#F7F8FA] border border-black/5 text-[#5A6675] hover:bg-white hover:text-[#111111] transition-all duration-300 font-medium"
               >
                 Cancel
               </Link>
@@ -504,23 +570,34 @@ export default function ProjectFormPage({
               <button
                 type="submit"
                 disabled={saving}
-                className="inline-flex items-center gap-2 px-10 py-4 rounded-2xl bg-white text-black shadow-lg hover:scale-[1.02] transition-all duration-300 font-semibold disabled:opacity-50"
+                className="group relative overflow-hidden inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-[#111111] text-white shadow-[0_20px_60px_-20px_rgba(0,0,0,0.4)] hover:shadow-[0_25px_70px_-20px_rgba(0,0,0,0.5)] transition-all duration-500 disabled:opacity-50"
               >
-                {saving ? (
-                  <>
-                    <Loader2 className="animate-spin" size={20} />
-                    Saving...
-                  </>
-                ) : (
-                  <>
-                    <Save size={20} />
-                    Save Project
-                  </>
-                )}
+
+                <div className="absolute inset-0 bg-gradient-to-r from-[#3BA9FF] to-[#111111] opacity-0 group-hover:opacity-100 transition duration-500" />
+
+                <span className="relative z-10 inline-flex items-center gap-2">
+
+                  {saving ? (
+                    <>
+                      <Loader2
+                        className="animate-spin"
+                        size={18}
+                      />
+
+                      Saving...
+                    </>
+                  ) : (
+                    <>
+                      <Save size={18} />
+
+                      Save Project
+                    </>
+                  )}
+                </span>
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

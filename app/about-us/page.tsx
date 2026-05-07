@@ -116,7 +116,7 @@ const page = () => {
               className="flex flex-wrap gap-4"
             >
 
-              <Link href="/#contacts">
+              <Link href="/#GetInTouch">
 
                 <button className="group px-10 py-5 bg-white text-[#111111] rounded-2xl hover:bg-[#3BA9FF] hover:text-white transition-all duration-500 flex items-center gap-3 shadow-2xl hover:-translate-y-1">
 
