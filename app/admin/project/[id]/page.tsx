@@ -11,6 +11,7 @@ import {
   X,
   Loader2,
   Image as ImageIcon,
+  Layout,
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -21,8 +22,7 @@ export default function ProjectFormPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-
-const [authorized, setAuthorized] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
   const router = useRouter();
   const { id: projectId } = use(params);
   const isNew = projectId === "new";
@@ -49,26 +49,22 @@ const [authorized, setAuthorized] = useState(false);
   const [existingImages, setExistingImages] = useState<string[]>([]);
 
   useEffect(() => {
+    const checkAuth = async () => {
+      const {
+        data: { session },
+      } = await supabaseAuth.auth.getSession();
 
-  const checkAuth = async () => {
+      if (!session) {
+        router.replace("/login");
 
-    const {
-      data: { session },
-    } = await supabaseAuth.auth.getSession();
+        return;
+      }
 
-    if (!session) {
+      setAuthorized(true);
+    };
 
-      router.replace("/login");
-
-      return;
-    }
-
-    setAuthorized(true);
-  };
-
-  checkAuth();
-
-}, []);
+    checkAuth();
+  }, []);
 
   useEffect(() => {
     if (!isNew) {
@@ -122,10 +118,10 @@ const [authorized, setAuthorized] = useState(false);
     formData.append("category", project.category || "");
 
     formData.append("existingImages", JSON.stringify(existingImages));
-console.log("SELECTED IMAGES:", selectedImages);
-for (const file of selectedImages) {
-  formData.append("images", file);
-}
+    console.log("SELECTED IMAGES:", selectedImages);
+    for (const file of selectedImages) {
+      formData.append("images", file);
+    }
 
     const res = await saveProject(formData);
 
@@ -147,14 +143,15 @@ for (const file of selectedImages) {
   }
 
   if (!authorized) {
-  return null;
-}
+    return null;
+  }
   return (
-    <div className="min-h-screen bg-[#F8FAFB] py-12 px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-[#0A0A0A] text-white py-12 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Back */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-2 text-[#5A6675] hover:text-[#3BA9FF] transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-10 group"
         >
           <ArrowLeft
             size={18}
@@ -163,207 +160,254 @@ for (const file of selectedImages) {
           Back to Dashboard
         </Link>
 
-        <div className="bg-white rounded-3xl shadow-xl border border-[#E8F3FF] overflow-hidden">
-          <div className="bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF] px-8 py-10 text-white">
-            <h1 className="text-3xl font-bold mb-2">
+        {/* Main Card */}
+        <div className="bg-[#121212] border border-white/10 rounded-[32px] overflow-hidden shadow-[0_20px_80px_-25px_rgba(0,0,0,0.8)]">
+          {/* Header */}
+          <div className="px-10 py-10 border-b border-white/10 bg-white/[0.02]">
+            <div className="flex items-center gap-2 text-[#3BA9FF] mb-3">
+              <Layout size={18} />
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold">
+                Timimetal CMS
+              </span>
+            </div>
+
+            <h1 className="text-4xl font-semibold tracking-tight mb-3">
               {isNew ? "Create New Project" : "Edit Project"}
             </h1>
-            <p className="text-white/80">
-              Fill in the details below to showcase your engineering excellence.
+
+            <p className="text-gray-400 text-lg">
+              Manage your portfolio projects professionally.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-8 space-y-8">
-            {/* Basic Info */}
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="p-10 space-y-10">
+            {/* Inputs */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#0a0e1a]">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
                   Project Title
                 </label>
+
                 <input
                   type="text"
                   required
                   value={project.title}
                   onChange={(e) =>
-                    setProject({ ...project, title: e.target.value })
+                    setProject({
+                      ...project,
+                      title: e.target.value,
+                    })
                   }
-                  className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none"
-                  placeholder="e.g. Industrial Complex Fabrication"
+                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  placeholder="Industrial Steel Construction"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#0a0e1a]">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
                   Category
                 </label>
+
                 <input
                   type="text"
                   required
                   value={project.category}
                   onChange={(e) =>
-                    setProject({ ...project, category: e.target.value })
+                    setProject({
+                      ...project,
+                      category: e.target.value,
+                    })
                   }
-                  className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none"
-                  placeholder="e.g. Industrial Fabrication"
+                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  placeholder="Metal Fabrication"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#0a0e1a]">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
                   Date / Period
                 </label>
+
                 <input
                   type="text"
                   required
                   value={project.date}
                   onChange={(e) =>
-                    setProject({ ...project, date: e.target.value })
+                    setProject({
+                      ...project,
+                      date: e.target.value,
+                    })
                   }
-                  className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none"
-                  placeholder="e.g. September 2024"
+                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  placeholder="September 2025"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#0a0e1a]">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
                   Location
                 </label>
+
                 <input
                   type="text"
                   required
                   value={project.location}
                   onChange={(e) =>
-                    setProject({ ...project, location: e.target.value })
+                    setProject({
+                      ...project,
+                      location: e.target.value,
+                    })
                   }
-                  className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none"
-                  placeholder="e.g. Detroit, Michigan"
+                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  placeholder="Tetovo, North Macedonia"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#0a0e1a]">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
                   Client
                 </label>
+
                 <input
                   type="text"
                   value={project.client}
                   onChange={(e) =>
-                    setProject({ ...project, client: e.target.value })
+                    setProject({
+                      ...project,
+                      client: e.target.value,
+                    })
                   }
-                  className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none"
-                  placeholder="e.g. Advanced Manufacturing Corp"
+                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  placeholder="Client Name"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[#0a0e1a]">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
                   Duration
                 </label>
+
                 <input
                   type="text"
                   value={project.duration}
                   onChange={(e) =>
-                    setProject({ ...project, duration: e.target.value })
+                    setProject({
+                      ...project,
+                      duration: e.target.value,
+                    })
                   }
-                  className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none"
-                  placeholder="e.g. 8 months"
+                  className="w-full h-[58px] px-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] transition-all text-white placeholder:text-gray-500"
+                  placeholder="8 Months"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#0a0e1a]">
-                Short Description (Card View)
-              </label>
-              <textarea
-                required
-                rows={3}
-                value={project.description}
-                onChange={(e) =>
-                  setProject({ ...project, description: e.target.value })
-                }
-                className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none resize-none"
-                placeholder="A brief overview for the project card..."
-              />
-            </div>
+            {/* Textareas */}
+            <div className="space-y-8">
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
+                  Short Description
+                </label>
 
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#0a0e1a]">
-                Full Description (Detail View)
-              </label>
-              <textarea
-                required
-                rows={6}
-                value={project.fullDescription}
-                onChange={(e) =>
-                  setProject({ ...project, fullDescription: e.target.value })
-                }
-                className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none resize-none"
-                placeholder="Detailed project history, technical specs, and comprehensive overview..."
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#0a0e1a]">
-                Technical Challenges
-              </label>
+                <textarea
+                  rows={3}
+                  required
+                  value={project.description}
+                  onChange={(e) =>
+                    setProject({
+                      ...project,
+                      description: e.target.value,
+                    })
+                  }
+                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
+                  placeholder="Project overview..."
+                />
+              </div>
 
-              <textarea
-                rows={4}
-                value={project.challenges || ""}
-                onChange={(e) =>
-                  setProject({
-                    ...project,
-                    challenges: e.target.value,
-                  })
-                }
-                className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none resize-none"
-                placeholder="Describe technical challenges..."
-              />
-            </div>
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
+                  Full Description
+                </label>
 
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#0a0e1a]">
-                Solutions
-              </label>
+                <textarea
+                  rows={6}
+                  required
+                  value={project.fullDescription}
+                  onChange={(e) =>
+                    setProject({
+                      ...project,
+                      fullDescription: e.target.value,
+                    })
+                  }
+                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
+                  placeholder="Detailed project description..."
+                />
+              </div>
 
-              <textarea
-                rows={4}
-                value={project.solutions || ""}
-                onChange={(e) =>
-                  setProject({
-                    ...project,
-                    solutions: e.target.value,
-                  })
-                }
-                className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none resize-none"
-                placeholder="Describe your solutions..."
-              />
-            </div>
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
+                  Technical Challenges
+                </label>
 
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#0a0e1a]">
-                Results
-              </label>
+                <textarea
+                  rows={4}
+                  value={project.challenges || ""}
+                  onChange={(e) =>
+                    setProject({
+                      ...project,
+                      challenges: e.target.value,
+                    })
+                  }
+                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
+                  placeholder="Describe technical challenges..."
+                />
+              </div>
 
-              <textarea
-                rows={4}
-                value={project.results || ""}
-                onChange={(e) =>
-                  setProject({
-                    ...project,
-                    results: e.target.value,
-                  })
-                }
-                className="w-full px-5 py-4 rounded-xl bg-[#F8FAFB] border border-[#E8F3FF] focus:border-[#3BA9FF] focus:ring-2 focus:ring-[#3BA9FF]/20 transition-all outline-none resize-none"
-                placeholder="Describe project results..."
-              />
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
+                  Solutions
+                </label>
+
+                <textarea
+                  rows={4}
+                  value={project.solutions || ""}
+                  onChange={(e) =>
+                    setProject({
+                      ...project,
+                      solutions: e.target.value,
+                    })
+                  }
+                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
+                  placeholder="Describe solutions..."
+                />
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-300">
+                  Results
+                </label>
+
+                <textarea
+                  rows={4}
+                  value={project.results || ""}
+                  onChange={(e) =>
+                    setProject({
+                      ...project,
+                      results: e.target.value,
+                    })
+                  }
+                  className="w-full px-5 py-5 rounded-2xl bg-[#181818] border border-white/10 outline-none focus:border-[#3BA9FF] resize-none transition-all text-white placeholder:text-gray-500"
+                  placeholder="Describe project results..."
+                />
+              </div>
             </div>
 
             {/* Images */}
-            <div className="space-y-4">
-              <label className="text-sm font-semibold text-[#0a0e1a] flex items-center gap-2">
+            <div className="space-y-5">
+              <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
                 <ImageIcon size={18} className="text-[#3BA9FF]" />
-                Project Images (The first image will be the main display)
+                Project Images
               </label>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -371,7 +415,7 @@ for (const file of selectedImages) {
                 {existingImages.map((url, index) => (
                   <div
                     key={`existing-${index}`}
-                    className="group relative aspect-square rounded-2xl overflow-hidden shadow-sm border border-[#E8F3FF]"
+                    className="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#181818]"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -379,15 +423,17 @@ for (const file of selectedImages) {
                       alt="Project"
                       className="w-full h-full object-cover"
                     />
+
                     <button
                       type="button"
                       onClick={() => removeExistingImage(url)}
-                      className="absolute top-2 right-2 p-1.5 rounded-full bg-red-500 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                     >
                       <X size={14} />
                     </button>
+
                     {index === 0 && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF]/80 text-white text-[10px] py-1 text-center font-bold">
+                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF] text-white text-[10px] py-1 text-center font-bold tracking-wider">
                         MAIN IMAGE
                       </div>
                     )}
@@ -398,7 +444,7 @@ for (const file of selectedImages) {
                 {imagePreviews.map((url, index) => (
                   <div
                     key={`new-${index}`}
-                    className="group relative aspect-square rounded-2xl overflow-hidden shadow-sm border border-[#E8F3FF]"
+                    className="group relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#181818]"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -406,30 +452,34 @@ for (const file of selectedImages) {
                       alt="Preview"
                       className="w-full h-full object-cover"
                     />
+
                     <button
                       type="button"
                       onClick={() => removeNewImage(index)}
-                      className="absolute top-2 right-2 p-1.5 rounded-full bg-red-500 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                     >
                       <X size={14} />
                     </button>
+
                     {existingImages.length === 0 && index === 0 && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF]/80 text-white text-[10px] py-1 text-center font-bold">
+                      <div className="absolute bottom-0 left-0 right-0 bg-[#3BA9FF] text-white text-[10px] py-1 text-center font-bold tracking-wider">
                         MAIN IMAGE
                       </div>
                     )}
                   </div>
                 ))}
 
-                {/* Upload Button */}
-                <label className="flex flex-col items-center justify-center aspect-square rounded-2xl border-2 border-dashed border-[#3BA9FF]/30 bg-[#F3F7FF] hover:bg-[#E8F3FF] hover:border-[#3BA9FF]/50 transition-all cursor-pointer group">
+                {/* Upload */}
+                <label className="flex flex-col items-center justify-center aspect-square rounded-2xl border border-dashed border-white/10 bg-[#181818] hover:border-[#3BA9FF]/50 hover:bg-[#1E1E1E] transition-all cursor-pointer group">
                   <Upload
-                    size={24}
-                    className="text-[#3BA9FF] group-hover:scale-110 transition-transform mb-2"
+                    size={28}
+                    className="text-[#3BA9FF] mb-3 group-hover:scale-110 transition-transform"
                   />
-                  <span className="text-xs font-semibold text-[#3BA9FF]">
+
+                  <span className="text-xs font-medium text-gray-300">
                     Upload Images
                   </span>
+
                   <input
                     type="file"
                     name="images"
@@ -442,17 +492,19 @@ for (const file of selectedImages) {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-[#E8F3FF] flex justify-end gap-4">
+            {/* Buttons */}
+            <div className="pt-8 border-t border-white/10 flex justify-end gap-4">
               <Link
                 href="/admin"
-                className="px-8 py-4 rounded-xl bg-white border border-[#E8F3FF] text-[#5A6675] hover:bg-[#F3F7FF] transition-all font-semibold"
+                className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white transition-all font-medium"
               >
                 Cancel
               </Link>
+
               <button
                 type="submit"
                 disabled={saving}
-                className="inline-flex items-center gap-2 px-10 py-4 rounded-xl bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF] text-white shadow-lg hover:shadow-xl hover:scale-105 disabled:opacity-50 disabled:scale-100 transition-all font-bold"
+                className="inline-flex items-center gap-2 px-10 py-4 rounded-2xl bg-white text-black shadow-lg hover:scale-[1.02] transition-all duration-300 font-semibold disabled:opacity-50"
               >
                 {saving ? (
                   <>

@@ -3,8 +3,19 @@
 
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+
+  const pathname = usePathname();
+
+if (
+  pathname.startsWith("/admin") ||
+  pathname.startsWith("/login")
+) {
+  return null;
+}
+
   return (
     <footer className="bg-[#030712] border-t border-white/10 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
