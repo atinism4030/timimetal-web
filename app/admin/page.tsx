@@ -11,29 +11,23 @@ import { motion } from "framer-motion";
 
 
 
-
-
-
-
 export default function AdminDashboard() {
     const router = useRouter();
   const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
 
-const handleLogout = async () => {
-
+  const handleLogout = async () => {
   await supabaseAuth.auth.signOut();
 
-  router.replace("/login");
+  window.location.href = "/login";
 };
 
   
 
 useEffect(() => {
 
-  const checkSession = async () => {
-
+  const checkAuth = async () => {
 
     const {
       data: { session },
@@ -41,7 +35,7 @@ useEffect(() => {
 
     if (!session) {
 
-      router.replace("/login");
+      router.push("/login");
 
       return;
     }
@@ -49,25 +43,7 @@ useEffect(() => {
     setAuthorized(true);
   };
 
-  checkSession();
-
-  const {
-    data: authListener,
-  } = supabaseAuth.auth.onAuthStateChange(
-    (_event, session) => {
-
-      if (!session) {
-
-        setAuthorized(false);
-
-        router.replace("/login");
-      }
-    }
-  );
-
-  return () => {
-    authListener.subscription.unsubscribe();
-  };
+  checkAuth();
 
 }, []);
 

@@ -14,12 +14,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { supabaseAuth } from "@/lib/supabase-auth";
 
 export default function ProjectFormPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+
+const [authorized, setAuthorized] = useState(false);
   const router = useRouter();
   const { id: projectId } = use(params);
   const isNew = projectId === "new";
@@ -44,6 +47,28 @@ export default function ProjectFormPage({
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
+
+  useEffect(() => {
+
+  const checkAuth = async () => {
+
+    const {
+      data: { session },
+    } = await supabaseAuth.auth.getSession();
+
+    if (!session) {
+
+      router.replace("/login");
+
+      return;
+    }
+
+    setAuthorized(true);
+  };
+
+  checkAuth();
+
+}, []);
 
   useEffect(() => {
     if (!isNew) {
@@ -121,6 +146,9 @@ for (const file of selectedImages) {
     );
   }
 
+  if (!authorized) {
+  return null;
+}
   return (
     <div className="min-h-screen bg-[#F8FAFB] py-12 px-6">
       <div className="max-w-4xl mx-auto">
