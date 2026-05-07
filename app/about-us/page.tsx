@@ -1,28 +1,30 @@
 "use client";
 import { motion } from "motion/react";
 import StoryCard from "@/components/About/StoryCard";
-import Header from "@/components/Header";
 import { stories } from "@/utils/stories";
-import { scale } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import HeroA from "@/public/AboutPhotos/HeroA.jpg";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
-import FactCard, { HighlightFacts } from "@/components/About/FactCard";
-import { facts } from "@/utils/facts";
+import { HighlightFacts } from "@/components/About/FactCard";
 import { reasons } from "@/utils/WhyUsReason";
 import ReasonCard from "@/components/About/ReasonCard";
 import TimeLineItem from "@/components/About/TimeLineItem";
 import { milestones } from "@/utils/milestone";
 import Certificatons from "@/components/About/Certificatons";
+import Link from "next/link";
 
 const page = () => {
   return (
-    <div className="bg-white h-full">
-      <div className="w-full h-[100vh] bg-blue-100 overflow-hidden flex items-center text-black">
+    <div className="bg-[#F7F8FA] h-full overflow-hidden">
+
+      {/* HERO */}
+      <div className="relative w-full min-h-screen overflow-hidden flex items-center text-black pt-24">
+
+        {/* IMAGE */}
         <motion.div
           className="absolute inset-0 z-0"
-          initial={{ scale: 1.1 }}
+          initial={{ scale: 1.08 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
@@ -33,142 +35,143 @@ const page = () => {
           />
         </motion.div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35 z-10"></div>
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-[#0B1220]/85 to-[#2563EB]/55 z-10" />
 
+        {/* GRID */}
+        <div className="absolute inset-0 opacity-[0.05] z-10 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:90px_90px]" />
+
+        {/* CONTENT */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24">
+
           <motion.div
-            className="max-w-4xl"
+            className="max-w-5xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
+
+            {/* BADGE */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mb-8"
             >
-              <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/60 rounded-full text-white/90">
-                Ndertojme te Ardhmen me Celik
+
+              <span className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/10 rounded-full text-white/90 shadow-2xl">
+
+                <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+
+                Ndërtojmë të Ardhmen me Çelik
               </span>
             </motion.div>
 
+            {/* TITLE */}
             <motion.h1
-              className="text-white mb-8"
+              className="text-white text-6xl md:text-7xl lg:text-8xl font-semibold tracking-[-0.06em] leading-[0.92] mb-10"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              Building Excellence Since 1999,
+              Building
+              <br />
+              Excellence Since 1999
             </motion.h1>
 
+            {/* TEXT */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="space-y-6 mb-10"
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="space-y-6 mb-12 max-w-4xl"
             >
-              <p className="text-white/95 text-xl leading-realxed">
-                E themeluar ne vitin 199, Timimetal eshte me shume se nje
-                kompani nderitmi - ne jemi nje ekip i pasionuar profesioinistesh
-                qe kemi perkushtuar me shume se 25 vjet ne krijimin e strukutrve
-                te qendrueshme dhe innovative.
+
+              <p className="text-white/75 text-lg md:text-xl leading-relaxed">
+                E themeluar në vitin 1999, Timimetal është më shumë se një
+                kompani ndërtimi — ne jemi një ekip profesionistësh të
+                përkushtuar ndaj krijimit të strukturave moderne dhe të
+                qëndrueshme.
               </p>
 
-              <p className="text-white/95 text-xl leading-realxed">
-                Nga nje puntori e vogel,ne jhemi rritur ne nje nga lideret
-                rajone te ndertimit insdustirajl, duke ndertuar shtepi moderne
-                me teknologji lGS ,struktura te medha celiku dhe fabrika qe
-                perkufizojne peisazhin industrial te reajonit. chdo projekt qe
-                ndetojme bart shenjen e cilesise sigurise dhe inovacioint.
+              <p className="text-white/75 text-lg md:text-xl leading-relaxed">
+                Nga një punëtori e vogël, jemi rritur në një nga liderët
+                rajonalë të ndërtimit industrial, duke realizuar struktura
+                çeliku, shtëpi moderne dhe projekte që përcaktojnë standarde të
+                reja.
               </p>
 
-              <p className="text-white/95 text-xl leading-realxed">
-                Me m bi 500 projekte te perfunduara nje ekip prej 8 +
-                inxhinieresh te certifikuar angazhim ndaj standardeve evropiane
-                ne nuk ndertojme thjesht strktura - ne krijojme trashigimi qe
-                zgjasin ne kohe
+              <p className="text-white/75 text-lg md:text-xl leading-relaxed">
+                Me mbi 500 projekte të përfunduara dhe një ekip inxhinierësh të
+                certifikuar, ne ndërtojmë jo vetëm struktura — por trashëgimi
+                që zgjasin në kohë.
               </p>
             </motion.div>
 
+            {/* BUTTONS */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
+              transition={{ duration: 0.8, delay: 1 }}
               className="flex flex-wrap gap-4"
             >
-              <button className="px-10 py-5 bg-white text-[#1E3A8a] rounded-xl hover:bg-[#60A5FA] hover:text-white transition-all duration-300 flex items-center gap-3 group shadow-2xl hover:shadow-white/20 hover:translate-y-1">
-                <span>Get in Touch</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-10 py-5 bg-transparent border-2 border-white/30 text-white rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
-                View Our Projects
-              </button>
+
+              <Link href="/#contacts">
+
+                <button className="group px-10 py-5 bg-white text-[#111111] rounded-2xl hover:bg-[#3BA9FF] hover:text-white transition-all duration-500 flex items-center gap-3 shadow-2xl hover:-translate-y-1">
+
+                  <span>Get in Touch</span>
+
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+
+              <Link href="/projects">
+
+                <button className="px-10 py-5 bg-white/5 border border-white/10 backdrop-blur-xl text-white rounded-2xl hover:bg-white/10 transition-all duration-500 hover:-translate-y-1">
+
+                  View Our Projects
+                </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
 
+        {/* SCROLL */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 -translate-1/2 z-20 flex flex-col items-center gap-3"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
         >
-          <span className="text-white/70 text-sm tracking-wider uppercase">
+
+          <span className="text-white/60 text-sm tracking-[0.25em] uppercase">
             Scroll to Discover
           </span>
+
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           >
-            <ChevronDown className="w-6 h-6 text-white/70" />
+
+            <ChevronDown className="w-6 h-6 text-white/60" />
           </motion.div>
         </motion.div>
       </div>
-      <div>
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block px-6 py-2 bg-[#F3F6FB] text-[#2563EB] rounded-full mb-4">
-                Rrëfimi Ynë
-              </span>
-              <h2 className="text-[#1E3A8A] mb-4">The Timimetal Story</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Një udhëtim i pasionit, inovacionit dhe përkushtimit ndaj
-                përsosmërisë në ndërtimin industrial.
-              </p>
-            </motion.div>
 
-            <div className="space-y-24">
-              {stories.map((story, index) => (
-                <StoryCard key={story.id} story={story} index={index} />
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-      <div className="py-24 bg-gradient-to-b from-white to-[#F3F6FB] max-w-7xl mx-auto px-6">
-        <HighlightFacts />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {facts.map((fact, index) => (
-            <FactCard key={fact.id} fact={fact} index={index} />
-          ))}
-        </div>
-      </div>
+      {/* STORY */}
+      <section className="py-24 bg-[#F7F8FA] relative overflow-hidden">
 
-      <section className="py-32 bg-gradient-to-b from-[#F3F6FB] via-white to-[#F3F6FB] relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 -left-20 w-96 h-96 bg-[#60A5FA] opacity-5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 -right-20 w-96 h-96 bg-[#2563EB] opacity-5 rounded-full blur-3xl" />
-        </div>
+        {/* GRID */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:90px_90px]" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+          {/* HEADER */}
           <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 30 }}
@@ -176,79 +179,139 @@ const page = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="inline-block mb-6"
-            >
-              <span className="px-8 py-3 bg-gradient-to-r from-[#2563EB]/10 to-[#60A5FA]/10 text-[#2563EB] rounded-full border border-[#2563EB]/20">
-                Avantazhet Tona
-              </span>
-            </motion.div>
 
-            <h2 className="text-[#1E3A8A] mb-6">Why Choose Timimetal</h2>
+            <span className="inline-flex items-center gap-2 px-5 py-2 bg-blue-50 border border-blue-100 text-[#3BA9FF] text-[11px] tracking-[0.22em] uppercase font-semibold mb-6">
 
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-              Zgjidhni partnerin që kombinon përvojën e gjatë me inovacionin
-              modern për rezultate të jashtëzakonshme. Çdo projekt që ndërtojmë
-              është një dëshmi e angazhimit tonë ndaj përsosmërisë.
+              <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+
+              Our Story
+            </span>
+
+            <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
+              The Timimetal Story
+            </h2>
+
+            <div className="w-24 h-[2px] bg-gradient-to-r from-[#3BA9FF] to-transparent mx-auto mb-8" />
+
+            <p className="text-gray-500 text-lg leading-relaxed max-w-3xl mx-auto">
+              Një udhëtim i pasionit, inovacionit dhe përkushtimit ndaj
+              përsosmërisë në ndërtimin industrial.
             </p>
           </motion.div>
 
+          {/* STORIES */}
+          <div className="space-y-28">
+            {stories.map((story, index) => (
+              <StoryCard
+                key={story.id}
+                story={story}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FACTS */}
+      <div className="py-24">
+        <HighlightFacts />
+      </div>
+
+      {/* WHY US */}
+      <section className="py-32 bg-[#F7F8FA] relative overflow-hidden">
+
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-[#60A5FA] opacity-5 rounded-full blur-3xl" />
+
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-[#2563EB] opacity-5 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+          {/* HEADER */}
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+
+            <span className="inline-flex items-center gap-2 px-5 py-2 bg-blue-50 border border-blue-100 text-[#3BA9FF] text-[11px] tracking-[0.22em] uppercase font-semibold mb-6">
+
+              <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+
+              Why Us
+            </span>
+
+            <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
+              Why Choose Timimetal
+            </h2>
+
+            <div className="w-24 h-[2px] bg-gradient-to-r from-[#3BA9FF] to-transparent mx-auto mb-8" />
+
+            <p className="text-gray-500 text-lg leading-relaxed max-w-3xl mx-auto">
+              Zgjidhni partnerin që kombinon përvojën me inovacionin modern për
+              rezultate të jashtëzakonshme.
+            </p>
+          </motion.div>
+
+          {/* GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+
             {reasons.map((reason, index) => (
-              <ReasonCard key={reason.id} reason={reason} index={index} />
+              <ReasonCard
+                key={reason.id}
+                reason={reason}
+                index={index}
+              />
             ))}
           </div>
 
+          {/* BOTTOM BANNER */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
           >
-            <div className="bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#1E3A8A] rounded-3xl p-12 text-center relative overflow-hidden">
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-1/4 w-2 h-2 bg-white rounded-full" />
-                <div className="absolute top-10 right-1/3 w-2 h-2 bg-white rounded-full" />
-                <div className="absolute bottom-10 left-1/2 w-2 h-2 bg-white rounded-full" />
-              </div>
+
+            <div className="relative overflow-hidden bg-[#050505] rounded-[32px] p-12 text-center">
+
+              <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-[#3BA9FF]/20 blur-3xl rounded-full" />
 
               <div className="relative z-10 flex flex-wrap items-center justify-center gap-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-white" />
+
+                {[
+                  "ISO 9001 Certified",
+                  "CE Marked",
+                  "European Standards",
+                ].map((item, index) => (
+
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 text-white"
+                  >
+
+                    <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
+
+                      <CheckCircle2 className="w-6 h-6 text-white" />
+                    </div>
+
+                    <span className="text-white/90">
+                      {item}
+                    </span>
                   </div>
-                  <span className="text-white">ISO 9001 Certified</span>
-                </div>
-
-                <div className="w-px h-8 bg-white/30" />
-
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-white">CE Marked</span>
-                </div>
-
-                <div className="w-px h-8 bg-white/30" />
-
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-white">European Standards</span>
-                </div>
+                ))}
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-      <div className="py-24 bg-white">
+
+      {/* TIMELINE */}
+      <div className="py-24 bg-[#F7F8FA]">
+
         <div className="max-w-6xl mx-auto px-6">
+
           <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 30 }}
@@ -256,14 +319,27 @@ const page = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-6 py-2 bg-[#F3F6FB] text-[#2563EB] rounded-full mb-4">Udhetimi Yne</span>
-            <h2 className="text-[#1E3A8A] mb-4">Company Journey</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Nga nje puntori e vogel ne nje kompani linder rajonale - historia
-              e rritjes dhe sukssesit tone
+
+            <span className="inline-flex items-center gap-2 px-5 py-2 bg-blue-50 border border-blue-100 text-[#3BA9FF] text-[11px] tracking-[0.22em] uppercase font-semibold mb-6">
+
+              <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+
+              Company Journey
+            </span>
+
+            <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
+              Our Journey
+            </h2>
+
+            <div className="w-24 h-[2px] bg-gradient-to-r from-[#3BA9FF] to-transparent mx-auto mb-8" />
+
+            <p className="text-gray-500 text-lg leading-relaxed max-w-3xl mx-auto">
+              Nga një punëtori e vogël në një kompani lider rajonale.
             </p>
           </motion.div>
+
           <div className="space-y-16 lg:space-y-24">
+
             {milestones.map((milestone, index) => (
               <TimeLineItem
                 key={milestone.id}
@@ -275,6 +351,8 @@ const page = () => {
           </div>
         </div>
       </div>
+
+      {/* CERTIFICATIONS */}
       <Certificatons />
     </div>
   );

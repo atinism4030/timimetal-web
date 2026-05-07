@@ -55,20 +55,7 @@ export function AllProjects({
         <div className="absolute top-20 left-1/4 w-[600px] h-[600px] bg-[#3BA9FF]/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 py-20 relative">
-          {/* Back Button */}
-          <Link href="/#projects">
-            <motion.button
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#3BA9FF]/20 hover:border-[#3BA9FF]/50 hover:bg-[#F3F7FF] transition-all duration-300 shadow-sm hover:shadow-md mb-12 group"
-            >
-              <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
-
-              <span className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">
-                Back to Home
-              </span>
-            </motion.button>
-          </Link>
+          
 
           {/* Header */}
           <motion.div

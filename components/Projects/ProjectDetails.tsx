@@ -1,162 +1,252 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowLeft, Calendar, MapPin, User, Award, Wrench } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  MapPin,
+  User,
+  Award,
+  Wrench,
+} from "lucide-react";
 import { ImageGallery } from "../ImageGallery";
 import { IProject } from "@/utils/types";
 import Link from "next/link";
 
-
 export function ProjectDetails({ project }: { project: IProject }) {
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section with Back Button */}
-      <div className="relative bg-gradient-to-b from-[#F8FAFB] to-white border-b border-[#E8F3FF]">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <motion.button
+    <div className="min-h-screen bg-[#F7F8FA] relative overflow-hidden pt-24">
+
+      {/* GRID BACKGROUND */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:90px_90px]" />
+
+      {/* BLUE GLOW */}
+      <div className="absolute top-[-250px] left-[-200px] w-[650px] h-[650px] bg-[#3BA9FF]/10 blur-3xl rounded-full pointer-events-none" />
+
+      {/* HERO */}
+      <div className="relative border-b border-black/5 bg-white overflow-hidden">
+
+        {/* INNER GRID */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#3BA9FF_1px,transparent_1px),linear-gradient(to_bottom,#3BA9FF_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+        <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
+
+          {/* BACK BUTTON */}
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#3BA9FF]/20 hover:border-[#3BA9FF]/50 hover:bg-[#F3F7FF] transition-all duration-300 shadow-sm hover:shadow-md mb-8 group"
+            className="mb-10"
           >
-            <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
-            <Link href={"/projects"} className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">Back to Projects</Link>
-          </motion.button>
 
+            <Link
+              href={"/projects"}
+              className="inline-flex items-center gap-2 px-5 py-3 bg-white border border-black/5 hover:border-[#3BA9FF]/30 transition-all duration-300 shadow-sm hover:shadow-md group"
+            >
+
+              <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
+
+              <span className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">
+                Back to Projects
+              </span>
+
+            </Link>
+          </motion.div>
+
+          {/* TITLE */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <h1 className="mb-6 text-[#0a0e1a] text-4xl md:text-5xl lg:text-6xl">{project?.title}</h1>
 
-            {/* Project Meta Information */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 shadow-sm">
-                <Calendar className="w-4 h-4 text-[#3BA9FF]" />
-                <span className="text-sm text-[#5A6675]">{project?.date}</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 shadow-sm">
-                <MapPin className="w-4 h-4 text-[#3BA9FF]" />
-                <span className="text-sm text-[#5A6675]">{project?.location}</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 shadow-sm">
-                <User className="w-4 h-4 text-[#3BA9FF]" />
-                <span className="text-sm text-[#5A6675]">{project?.client}</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 shadow-sm">
-                <Award className="w-4 h-4 text-[#3BA9FF]" />
-                <span className="text-sm text-[#5A6675]">{project?.category}</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 shadow-sm">
-                <Wrench className="w-4 h-4 text-[#3BA9FF]" />
-                <span className="text-sm text-[#5A6675]">{project?.duration}</span>
-              </div>
+            {/* BADGE */}
+            <div className="inline-flex items-center gap-3 px-5 py-2 mb-8 bg-blue-50 border border-blue-100">
+
+              <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+
+              <span className="text-[11px] uppercase tracking-[0.25em] text-[#3BA9FF] font-semibold">
+                Project Overview
+              </span>
             </div>
 
-            <p className="text-[#5A6675] leading-relaxed max-w-4xl">
+            {/* TITLE */}
+            <h1 className="mb-8 text-[#111111] text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] leading-[0.95] max-w-5xl">
+              {project?.title}
+            </h1>
+
+            {/* META */}
+            <div className="flex flex-wrap gap-4 mb-10">
+
+              {[
+                {
+                  icon: Calendar,
+                  value: project?.date,
+                },
+                {
+                  icon: MapPin,
+                  value: project?.location,
+                },
+                {
+                  icon: User,
+                  value: project?.client,
+                },
+                {
+                  icon: Award,
+                  value: project?.category,
+                },
+                {
+                  icon: Wrench,
+                  value: project?.duration,
+                },
+              ].map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={index}
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-white border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
+                  >
+
+                    <Icon className="w-4 h-4 text-[#3BA9FF]" />
+
+                    <span className="text-sm text-[#5A6675]">
+                      {item.value}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* DESCRIPTION */}
+            <p className="text-[#5A6675] leading-relaxed max-w-4xl text-lg">
               {project?.description}
             </p>
           </motion.div>
         </div>
       </div>
 
-      {/* Full-Width Image Gallery */}
+      {/* IMAGE GALLERY */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
+        className="relative z-10"
       >
         <ImageGallery key={project?.date} images={project?.images!} />
       </motion.div>
 
-      {/* Project Details Content */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Full Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="inline-block">
-              <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 mb-4">
-                <span className="text-sm text-[#3BA9FF] tracking-wide">Project Overview</span>
-              </div>
-            </div>
-            <h3 className="text-[#0a0e1a]">About This Project</h3>
-            <p className="text-[#5A6675] leading-relaxed">{project?.fullDescription}</p>
-          </motion.div>
+      {/* CONTENT */}
+      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
 
-          {/* Challenges */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-6"
-          >
-            <div className="inline-block">
-              <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 mb-4">
-                <span className="text-sm text-[#3BA9FF] tracking-wide">Challenges</span>
-              </div>
-            </div>
-            <h3 className="text-[#0a0e1a]">Technical Challenges</h3>
-            <p className="text-[#5A6675] leading-relaxed">
-              {project?.challenges}
-            </p>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-          {/* Solutions */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="space-y-6"
-          >
-            <div className="inline-block">
-              <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 mb-4">
-                <span className="text-sm text-[#3BA9FF] tracking-wide">Solutions</span>
-              </div>
-            </div>
-            <h3 className="text-[#0a0e1a]">Our Approach</h3>
-          <p className="text-[#5A6675] leading-relaxed">
-            {project?.solutions}
-          </p>
-          </motion.div>
+          {[
+            {
+              title: "About This Project",
+              badge: "Overview",
+              content: project?.fullDescription,
+            },
+            {
+              title: "Technical Challenges",
+              badge: "Challenges",
+              content: project?.challenges,
+            },
+            {
+              title: "Our Approach",
+              badge: "Solutions",
+              content: project?.solutions,
+            },
+            {
+              title: "Project Outcomes",
+              badge: "Results",
+              content: project?.results,
+            },
+          ].map((section, index) => (
 
-          {/* Results */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="space-y-6"
-          >
-            <div className="inline-block">
-              <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#3BA9FF]/10 to-[#6FB7FF]/10 border border-[#3BA9FF]/25 mb-4">
-                <span className="text-sm text-[#3BA9FF] tracking-wide">Results</span>
-              </div>
-            </div>
-            <h3 className="text-[#0a0e1a]">Project Outcomes</h3>
-          <p className="text-[#5A6675] leading-relaxed">
-            {project?.results}
-          </p>
-          </motion.div>
-      </div>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
+              className="group relative overflow-hidden bg-white border border-black/5 p-10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-500"
+            >
 
+              {/* HOVER EFFECT */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#3BA9FF]/10 via-transparent to-transparent" />
+
+              <div className="relative z-10">
+
+                {/* BADGE */}
+                <div className="inline-block mb-6">
+
+                  <div className="px-4 py-2 bg-blue-50 border border-blue-100">
+
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#3BA9FF] font-semibold">
+                      {section.badge}
+                    </span>
+                  </div>
+                </div>
+
+                {/* TITLE */}
+                <h3 className="text-[#111111] text-3xl font-semibold tracking-tight mb-6">
+                  {section.title}
+                </h3>
+
+                {/* TEXT */}
+                <p className="text-[#5A6675] leading-relaxed text-lg">
+                  {section.content}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-16 p-10 rounded-2xl bg-gradient-to-br from-[#F3F7FF] to-white border-2 border-[#3BA9FF]/20 shadow-xl text-center"
+          className="relative overflow-hidden mt-16 bg-[#050505] p-12 md:p-16 text-center"
         >
-          <h3 className="mb-4 text-[#0a0e1a]">Interested in Similar Work?</h3>
-          <p className="text-[#5A6675] mb-8 max-w-2xl mx-auto leading-relaxed">
-            We're ready to bring your next metal fabrication project to life with the same level of precision and excellence.
-          </p>
-          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#3BA9FF] to-[#6FB7FF] hover:from-[#2E8FE5] hover:to-[#5BA3E5] text-white shadow-lg hover:shadow-xl transition-all duration-300">
-            Get a Quote for Your Project
-          </button>
+
+          {/* GLOW */}
+          <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-[#3BA9FF]/20 blur-3xl rounded-full" />
+
+          <div className="relative z-10">
+
+            {/* BADGE */}
+            <div className="inline-flex items-center gap-3 px-5 py-2 mb-8 bg-white/10 border border-white/10 backdrop-blur-xl">
+
+              <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+
+              <span className="text-[11px] uppercase tracking-[0.25em] text-white/70 font-semibold">
+                Start Your Project
+              </span>
+            </div>
+
+            {/* TITLE */}
+            <h3 className="mb-6 text-white text-4xl md:text-5xl font-semibold tracking-[-0.05em] leading-tight">
+              Interested in Similar Work?
+            </h3>
+
+            {/* TEXT */}
+            <p className="text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed text-lg">
+              We’re ready to help bring your next construction or steel project
+              to life with precision, innovation, and modern engineering
+              solutions.
+            </p>
+
+            {/* BUTTON */}
+            <Link href="/#GetInTouch">
+
+              <button className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#3BA9FF] text-black hover:text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+
+                Contact here
+
+              </button>
+
+            </Link>
+          </div>
         </motion.div>
       </div>
     </div>
