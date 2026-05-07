@@ -33,7 +33,7 @@ const page = () => {
           />
         </motion.div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A8A]/95 via-[#1E3A8A] to-[#2563EB]/72 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35 z-10"></div>
 
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24">
           <motion.div
@@ -48,7 +48,7 @@ const page = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mb-8"
             >
-              <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90">
+              <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/60 rounded-full text-white/90">
                 Ndertojme te Ardhmen me Celik
               </span>
             </motion.div>

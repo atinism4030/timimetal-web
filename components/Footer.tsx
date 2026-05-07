@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Instagram, Facebook } from "lucide-react";
 
 const Footer = () => {
 
@@ -70,7 +71,7 @@ if (
 
               <div className="flex items-center gap-3">
                 <Phone size={18} className="text-[#3BA9FF]" />
-                <span>+389 XX XXX XXX</span>
+                <span>+389 70 209 553</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -82,13 +83,40 @@ if (
         </div>
 
         {/* Bottom */}
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <p>© 2026 Timimetal. All rights reserved.</p>
+<div className="mt-10 pt-6 border-t border-white/10 flex flex-col gap-6 items-center text-xs text-gray-500">
 
-          <p>
-            Designed & Developed by Horizonte Digital Group.
-          </p>
-        </div>
+  {/* Socials */}
+  <div className="flex items-center gap-4">
+
+    <a
+      href="https://www.instagram.com/timimetal/"
+      target="_blank"
+      className="w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
+    >
+      <Instagram size={18} />
+    </a>
+
+    <a
+      href="https://www.facebook.com/p/Timimetal-Dooel-100038760675629/"
+      target="_blank"
+      className="w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
+    >
+      <Facebook size={18} />
+    </a>
+
+  </div>
+
+  {/* Copyright */}
+  <div className="flex flex-col md:flex-row justify-between items-center gap-3 w-full">
+
+    <p>© 2026 Timimetal. All rights reserved.</p>
+
+    <p>
+      Designed & Developed by Horizonte Digital Group.
+    </p>
+
+  </div>
+</div>
       </div>
     </footer>
   );

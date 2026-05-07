@@ -9,7 +9,7 @@ const ProjectsHome = async () => {
   const featuredProjects = projects.slice(0, 3);
 
   return (
-    <section className="bg-[#050505] text-white py-24 md:py-32 px-6 md:px-12 lg:px-20 relative overflow-hidden" id="projects">
+    <section className="bg-[#050505] text-white py-20 md:py-16 px-6 md:px-12 lg:px-20 relative overflow-hidden" id="projects">
       <div className="max-w-[1400px] mx-auto relative z-10 w-full">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24">
