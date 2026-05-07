@@ -10,29 +10,30 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
+
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (pathname.startsWith("/admin") || (pathname.startsWith("/login"))) {
-  return null;
-}
-
+  if (pathname.startsWith("/admin") || pathname.startsWith("/login")) {
+    return null;
+  }
 
   return (
-    <nav className={`fixed top-0 left-0 w-full h-[80px] z-[100] transition-all duration-500 ease-in-out ${
-      isScrolled 
-        ? "bg-white/95 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1)] border-b border-gray-100" 
-        : "bg-transparent border-b border-white/10"
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 w-full h-[80px] z-[100] transition-all duration-500 ease-in-out ${
+        isScrolled || pathname !== "/"
+          ? "bg-white/95 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1)] border-b border-gray-100"
+          : "bg-transparent border-b border-white/10"
+      }`}
+    >
       <div className="flex justify-between items-center px-6 md:px-10 lg:px-20 h-full w-full max-w-[1920px] mx-auto">
         <Link href="/">
           <Image
@@ -40,61 +41,125 @@ const Header = () => {
             alt="Logo"
             width={200}
             height={80}
-            className={`cursor-pointer w-[140px] md:w-[180px] h-auto object-contain transition-all duration-500 ${!isScrolled ? "brightness-0 invert opacity-90" : "opacity-100"}`}
+            className={`cursor-pointer w-[140px] md:w-[180px] h-auto object-contain transition-all duration-500 ${
+              !isScrolled && pathname === "/"
+                ? "brightness-0 invert opacity-90"
+                : "opacity-100"
+            }`}
           />
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center">
-          <ul className={`flex justify-center items-center space-x-10 text-xs tracking-[0.15em] font-medium uppercase transition-colors duration-500 ${isScrolled ? "text-gray-900" : "text-white"}`}>
+          <ul
+            className={`flex justify-center items-center space-x-10 text-xs tracking-[0.15em] font-medium uppercase transition-colors duration-500 ${
+              isScrolled || pathname !== "/" ? "text-gray-900" : "text-white"
+            }`}
+          >
             <li>
-              <Link href="/" className="hover:opacity-70 transition duration-300">Home</Link>
+              <Link
+                href="/"
+                className="hover:opacity-70 transition duration-300"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="#services" className="hover:opacity-70 transition duration-300">Services</Link>
+              <Link
+                href="#services"
+                className="hover:opacity-70 transition duration-300"
+              >
+                Services
+              </Link>
             </li>
             <li>
-              <Link href="/about-us" className="hover:opacity-70 transition duration-300">About Us</Link>
+              <Link
+                href="/about-us"
+                className="hover:opacity-70 transition duration-300"
+              >
+                About Us
+              </Link>
             </li>
             <li>
-              <Link href="/projects" className="hover:opacity-70 transition duration-300">Projects</Link>
+              <Link
+                href="/projects"
+                className="hover:opacity-70 transition duration-300"
+              >
+                Projects
+              </Link>
             </li>
             <li>
-              <Link href="/#GetInTouch" className="hover:opacity-70 transition duration-300">Contacts</Link>
+              <Link
+                href="/#GetInTouch"
+                className="hover:opacity-70 transition duration-300"
+              >
+                Contacts
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="hidden lg:block">
-          <button className={`px-8 py-3 text-xs tracking-widest font-semibold uppercase transition duration-500 ${
-            isScrolled 
-              ? "bg-[#050505] text-white hover:bg-black hover:shadow-2xl hover:-translate-y-0.5" 
-              : "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-black hover:-translate-y-0.5"
-          }`}>
+          <button
+            className={`px-8 py-3 text-xs tracking-widest font-semibold uppercase transition duration-500 ${
+              isScrolled
+                ? "bg-[#050505] text-white hover:bg-black hover:shadow-2xl hover:-translate-y-0.5"
+                : "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-black hover:-translate-y-0.5"
+            }`}
+          >
             Get Quote
           </button>
         </div>
 
         {/* Mobile Toggle */}
         <div className="lg:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`p-2 transition-colors duration-500 ${isScrolled ? "text-gray-900" : "text-white"}`}>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`p-2 transition-colors duration-500 ${
+              isScrolled || pathname !== "/" ? "text-gray-900" : "text-white"
+            }`}
+          >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-[80px] left-0 w-full bg-white shadow-2xl py-8 flex flex-col items-center gap-8 animate-in slide-in-from-top-4 fade-in duration-300 border-t border-gray-100">
-          <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-xl font-light tracking-wide text-gray-900 hover:text-gray-500 transition-colors">Home</Link>
-          <Link href="#services" onClick={() => setIsMenuOpen(false)} className="text-xl font-light tracking-wide text-gray-900 hover:text-gray-500 transition-colors">Services</Link>
-          <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="text-xl font-light tracking-wide text-gray-900 hover:text-gray-500 transition-colors">About Us</Link>
-          <Link href="/projects" onClick={() => setIsMenuOpen(false)} className="text-xl font-light tracking-wide text-gray-900 hover:text-gray-500 transition-colors">Projects</Link>
-          <Link href="#contact" onClick={() => setIsMenuOpen(false)} className="text-xl font-light tracking-wide text-gray-900 hover:text-gray-500 transition-colors">Contacts</Link>
+        <div className="lg:hidden fixed inset-0 top-[80px] bg-black/40 backdrop-blur-xl z-[99] animate-in fade-in duration-300">
+          <div className="absolute top-4 left-4 right-4 bg-white rounded-[32px] shadow-[0_25px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden border border-gray-100">
+            <div className="flex flex-col py-3">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/#services" },
+                { label: "About Us", href: "/about-us" },
+                { label: "Projects", href: "/projects" },
+                { label: "Contacts", href: "/#GetInTouch" },
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="group flex items-center justify-between px-7 py-5 border-b border-gray-100 last:border-none hover:bg-[#F7FAFF] transition-all duration-300"
+                >
+                  <span className="text-[15px] font-medium text-gray-900 tracking-wide">
+                    {item.label}
+                  </span>
 
-          <button className="bg-[#050505] text-white font-semibold tracking-widest uppercase text-sm px-10 py-4 w-3/4 shadow-xl">
-            Get Quote
-          </button>
+                  <span className="text-gray-400 group-hover:text-[#3BA9FF] group-hover:translate-x-1 transition-all duration-300">
+                    →
+                  </span>
+                </Link>
+              ))}
+
+              <div className="p-5 pt-6">
+                <button className="w-full bg-[#050505] text-white rounded-2xl py-4 text-[12px] tracking-[0.18em] uppercase font-semibold shadow-xl hover:scale-[1.02] transition-all duration-300">
+                  Get Quote
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </nav>
