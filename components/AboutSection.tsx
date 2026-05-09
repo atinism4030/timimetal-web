@@ -4,9 +4,9 @@ import WeldingImage from "@/public/Image (Welding metal construction with sparks
 import Link from "next/link";
 
 const metrics = [
-  { value: "25+", label: "Years Experience" },
-  { value: "500+", label: "Projects Completed" },
-  { value: "50+", label: "Expert Welders" },
+  { value: "23+", label: "Years Experience" },
+  { value: "587+", label: "Projects Completed" },
+  { value: "39+", label: "Export Projects" },
   { value: "100%", label: "Client Satisfaction" },
 ];
 
@@ -27,7 +27,7 @@ const AboutSection = () => {
           {/* Floating Heritage Badge */}
           <div className="absolute -bottom-10 -right-10 bg-[#050505] text-white p-10 rounded-xl shadow-2xl hidden md:block">
             <p className="text-xs tracking-[0.4em] font-medium uppercase text-gray-400 mb-3">Established</p>
-            <p className="text-6xl font-light tracking-tighter">1999</p>
+            <p className="text-6xl font-light tracking-tighter">2003</p>
           </div>
         </div>
 
@@ -36,7 +36,7 @@ const AboutSection = () => {
           <p className="uppercase tracking-[0.3em] text-xs font-semibold text-gray-400 mb-6">Our Heritage</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 leading-[1.1] mb-8 tracking-tight">
             Building <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-black">Excellence</span> <br/>
-            Since 1999
+            Since 2003
           </h2>
           
           <div className="w-20 h-[1px] bg-gray-300 mb-8" />

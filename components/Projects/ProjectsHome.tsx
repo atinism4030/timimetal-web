@@ -15,9 +15,9 @@ const ProjectsHome = async () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1] mb-6 whitespace-nowrap">
-              Selected <br />
+              Projektet <br />
               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-600">
-                Masterpieces
+                Tona
               </span>
             </h2>
             <div className="h-[1px] w-24 bg-white/20 mb-8" />

@@ -12,12 +12,12 @@ interface Service {
 }
 
 const services: Service[] = [
-    { title: "Structural Engineering", descOpen: "Reliable structural designs for steel and concrete, ensuring your project's integrity with the highest engineering standards.", icon: <TbWaveSawTool size={36} className="text-gray-500" /> },
-    { title: "Architectural Design", descOpen: "Innovative and sustainable planning, including 3D modeling and detailed visualizations to realize your vision.", icon: <MdRoofing size={36} className="text-gray-500" /> },
-    { title: "Project Management", descOpen: "Complete project management, ensuring precise supervision, deadline compliance, and strict quality controls from start to finish.", icon: <PiFactoryThin size={36} className="text-gray-500" /> },
-    { title: "Metal Fabrication", descOpen: "High-precision metal cutting, welding, and assembly for industrial and commercial projects using the latest technology.", icon: <TbCarCrane size={36} className="text-gray-500" /> },
-    { title: "Consulting", descOpen: "Expert technical support and feasibility studies for large scale projects, providing strategic advice and data-driven solutions.", icon: <MdArchitecture size={36} className="text-gray-500" /> },
-    { title: "Electrical Systems", descOpen: "Design and installation of smart electrical systems, ensuring energy efficiency and full integration of modern technology in your building.", icon: <MdSolarPower size={36} className="text-gray-500" /> },
+    { title: "Structural Engineering and Design", descOpen: "Reliable structural designs for steel and concrete, ensuring your project's integrity with the highest engineering standards.", icon: <TbWaveSawTool size={36} className="text-gray-500" /> },
+    { title: "Metal Consturction", descOpen: "Innovative and sustainable planning, including 3D modeling and detailed visualizations to realize your vision.", icon: <MdRoofing size={36} className="text-gray-500" /> },
+    { title: "LGS Contruction", descOpen: "Complete project management, ensuring precise supervision, deadline compliance, and strict quality controls from start to finish.", icon: <PiFactoryThin size={36} className="text-gray-500" /> },
+    { title: "Metal Roofing and Facade", descOpen: "High-precision metal cutting, welding, and assembly for industrial and commercial projects using the latest technology.", icon: <TbCarCrane size={36} className="text-gray-500" /> },
+    { title: "Crane Services", descOpen: "Expert technical support and feasibility studies for large scale projects, providing strategic advice and data-driven solutions.", icon: <MdArchitecture size={36} className="text-gray-500" /> },
+    { title: "Photovoltaic system", descOpen: "Design and installation of smart electrical systems, ensuring energy efficiency and full integration of modern technology in your building.", icon: <MdSolarPower size={36} className="text-gray-500" /> },
 ];
 
 const ServicesList: React.FC = () => {

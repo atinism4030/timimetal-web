@@ -57,14 +57,14 @@ export default function HeroVideo() {
                 }}
                 className="text-white/70 uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-2 ml-1"
               >
-                Pioneering the Future of Steel
+               E ardhmja e ndertesave te celikut
               </motion.p>
             </div>
 
-            <h1 className="text-white font-light text-5xl md:text-7xl lg:text-[6rem] leading-[1.05] tracking-tight">
-              Timimetal <br />
+            <h1 className="text-white font-light text-5xl md:text-7xl lg:text-[6rem] leading-[1.05] tracking-tight ">
+              
               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500">
-                Structures
+                Timimetal
               </span>
             </h1>
 

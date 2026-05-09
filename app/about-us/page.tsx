@@ -212,11 +212,7 @@ const page = () => {
         </div>
       </section>
 
-      {/* FACTS */}
-      <div className="py-24">
-        <HighlightFacts />
-      </div>
-
+ 
       {/* WHY US */}
       <section className="py-32 bg-[#F7F8FA] relative overflow-hidden">
 
@@ -266,44 +262,7 @@ const page = () => {
             ))}
           </div>
 
-          {/* BOTTOM BANNER */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
 
-            <div className="relative overflow-hidden bg-[#050505] rounded-[32px] p-12 text-center">
-
-              <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-[#3BA9FF]/20 blur-3xl rounded-full" />
-
-              <div className="relative z-10 flex flex-wrap items-center justify-center gap-8">
-
-                {[
-                  "ISO 9001 Certified",
-                  "CE Marked",
-                  "European Standards",
-                ].map((item, index) => (
-
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 text-white"
-                  >
-
-                    <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
-
-                      <CheckCircle2 className="w-6 h-6 text-white" />
-                    </div>
-
-                    <span className="text-white/90">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
