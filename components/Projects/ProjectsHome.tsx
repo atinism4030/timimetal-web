@@ -9,7 +9,10 @@ const ProjectsHome = async () => {
   const featuredProjects = projects.slice(0, 3);
 
   return (
-    <section className="bg-[#050505] text-white py-20 md:py-16 px-6 md:px-12 lg:px-20 relative overflow-hidden" id="projects">
+    <section
+      className="bg-[#050505] text-white py-20 md:py-16 px-6 md:px-12 lg:px-20 relative overflow-hidden"
+      id="projects"
+    >
       <div className="max-w-[1400px] mx-auto relative z-10 w-full">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24">
@@ -22,8 +25,9 @@ const ProjectsHome = async () => {
             </h2>
             <div className="h-[1px] w-24 bg-white/20 mb-8" />
             <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
-              Showcasing our expertise through successful projects that demonstrate
-              innovation, quality craftsmanship, and engineering excellence.
+              Duke prezantuar ekspertizën tonë përmes projekteve të suksesshme
+              që pasqyrojnë inovacionin, cilësinë e realizimit dhe ekselencën
+              inxhinierike.
             </p>
           </div>
 
@@ -31,7 +35,9 @@ const ProjectsHome = async () => {
             href="/projects"
             className="group inline-flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/15 hover:border-white/30 rounded-full px-8 py-4 transition-all duration-500 w-max shrink-0"
           >
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] font-medium text-white/90 group-hover:text-white">Full Portfolio</span>
+            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] font-medium text-white/90 group-hover:text-white">
+              Portofoli i Plotë
+            </span>
             <div className="bg-white/10 p-2 rounded-full group-hover:bg-white group-hover:text-black transition-all duration-300">
               <ArrowRight size={16} />
             </div>

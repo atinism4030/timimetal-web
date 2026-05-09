@@ -15,7 +15,7 @@ const Services: React.FC = () => {
               viewport={{ once: true }}
               className="uppercase tracking-[0.3em] text-xs font-semibold text-gray-400 mb-6"
             >
-              Our Capabilities
+              AFTËSITË TONA
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -24,10 +24,13 @@ const Services: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-7xl font-light tracking-tight text-gray-900 leading-[1.05]"
             >
-              Comprehensive <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-black">Engineering</span>
+              Inxhinieri{" "}
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-black">
+                Gjithëpërfshirëse
+              </span>
             </motion.h2>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,11 +40,13 @@ const Services: React.FC = () => {
           >
             <div className="w-16 h-[1px] bg-gray-300 hidden lg:block" />
             <p className="text-gray-500 text-lg lg:text-xl max-w-lg leading-relaxed font-light">
-              Delivering advanced metal construction solutions from initial design through to completion, backed by structural integrity and cutting-edge operational technology.
+              Ofrimi i zgjidhjeve të avancuara për konstruksione metalike, nga
+              projektimi fillestar deri në realizimin final, të mbështetura nga
+              integriteti strukturor dhe teknologjia moderne operative.{" "}
             </p>
           </motion.div>
         </div>
-        
+
         <ServicesList />
       </div>
     </section>

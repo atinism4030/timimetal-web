@@ -3,6 +3,7 @@ import Services from "@/components/Services/Services";
 import AboutSection from "@/components/AboutSection";
 import ProjectsHome from "@/components/Projects/ProjectsHome";
 import GetInTouch from "@/components/GetInTouch/GetInTouch";
+import Partners from "@/components/Partners";
 
 export default async function Home() {
 
@@ -23,6 +24,11 @@ export default async function Home() {
       <div>
         <ProjectsHome />
       </div>
+
+      <div>
+        <Partners />
+      </div>
+
 
       <div>
         <GetInTouch />

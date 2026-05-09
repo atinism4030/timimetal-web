@@ -131,7 +131,7 @@ export default function ProjectCard({ project }: { project: IProject }) {
             </div>
 
             {/* DESCRIPTION */}
-            <p className="text-[#5A6675] leading-relaxed flex-1">
+            <p className="text-[#5A6675] leading-relaxed flex-1 line-clamp-4">
               {project?.description}
             </p>
 
@@ -154,7 +154,7 @@ export default function ProjectCard({ project }: { project: IProject }) {
                 className="inline-flex items-center gap-2 text-xs tracking-[0.2em] text-[#00008B]/60 group-hover:text-[#00008B] transition-colors duration-300 uppercase font-semibold"
               >
 
-                View Details
+                Shiko Detajet
 
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
                   →

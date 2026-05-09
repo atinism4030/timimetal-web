@@ -76,7 +76,7 @@ const page = () => {
             >
               Building
               <br />
-              Excellence Since 1999
+              Excellence Since 2003
             </motion.h1>
 
             {/* TEXT */}
@@ -88,7 +88,7 @@ const page = () => {
             >
 
               <p className="text-white/75 text-lg md:text-xl leading-relaxed">
-                E themeluar në vitin 1999, Timimetal është më shumë se një
+                E themeluar në vitin 2003, Timimetal është më shumë se një
                 kompani ndërtimi — ne jemi një ekip profesionistësh të
                 përkushtuar ndaj krijimit të strukturave moderne dhe të
                 qëndrueshme.
@@ -120,7 +120,7 @@ const page = () => {
 
                 <button className="group px-10 py-5 bg-white text-[#111111] rounded-2xl hover:bg-[#3BA9FF] hover:text-white transition-all duration-500 flex items-center gap-3 shadow-2xl hover:-translate-y-1">
 
-                  <span>Get in Touch</span>
+                  <span>Kontaktoni Këtu</span>
 
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -130,7 +130,7 @@ const page = () => {
 
                 <button className="px-10 py-5 bg-white/5 border border-white/10 backdrop-blur-xl text-white rounded-2xl hover:bg-white/10 transition-all duration-500 hover:-translate-y-1">
 
-                  View Our Projects
+                  Shikoni Projektet Tona
                 </button>
               </Link>
             </motion.div>
@@ -184,11 +184,11 @@ const page = () => {
 
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
-              Our Story
+              Historia Jonë
             </span>
 
             <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
-              The Timimetal Story
+              Historia e Timimetal
             </h2>
 
             <div className="w-24 h-[2px] bg-gradient-to-r from-[#3BA9FF] to-transparent mx-auto mb-8" />
@@ -235,11 +235,11 @@ const page = () => {
 
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
-              Why Us
+              PSE NE
             </span>
 
             <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
-              Why Choose Timimetal
+              Pse të Zgjidhni Timimetal
             </h2>
 
             <div className="w-24 h-[2px] bg-gradient-to-r from-[#3BA9FF] to-transparent mx-auto mb-8" />
@@ -283,11 +283,11 @@ const page = () => {
 
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
-              Company Journey
+              RRUGËTIMI I KOMPANISË
             </span>
 
             <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
-              Our Journey
+              Rrugëtimi Ynë
             </h2>
 
             <div className="w-24 h-[2px] bg-gradient-to-r from-[#3BA9FF] to-transparent mx-auto mb-8" />

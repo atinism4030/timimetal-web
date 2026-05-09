@@ -57,12 +57,11 @@ export default function HeroVideo() {
                 }}
                 className="text-white/70 uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-2 ml-1"
               >
-               E ardhmja e ndertesave te celikut
+                E ardhmja e ndertesave te celikut
               </motion.p>
             </div>
 
             <h1 className="text-white font-light text-5xl md:text-7xl lg:text-[6rem] leading-[1.05] tracking-tight ">
-              
               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500">
                 Timimetal
               </span>
@@ -76,8 +75,8 @@ export default function HeroVideo() {
             />
 
             <p className="text-gray-300 text-lg md:text-xl font-light max-w-xl leading-relaxed">
-              Industrial, commercial, infrastructure, LGS, eco-friendly homes.
-              We transform ambitious blueprints into enduring realities.
+              Industriale, komerciale, infrastrukturë, LGS, shtëpi ekologjike.
+              Ne i transformojmë planet ambicioze në realitete të qëndrueshme.
             </p>
           </motion.div>
 
@@ -92,7 +91,7 @@ export default function HeroVideo() {
               className="group flex justify-between items-center gap-6 bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 hover:border-white/30 text-white px-8 py-4 rounded-full transition-all duration-300"
             >
               <span className="text-sm font-medium tracking-wide">
-                View Projects
+                Shiko Projektet
               </span>
 
               <div className="bg-white text-black p-2 rounded-full group-hover:translate-x-1 transition-transform">

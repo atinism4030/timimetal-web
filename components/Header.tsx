@@ -105,7 +105,7 @@ const Header = () => {
                 href="/"
                 className="hover:opacity-70 transition duration-300"
               >
-                Home
+                Fillimi
               </Link>
             </li>
             <li>
@@ -113,7 +113,7 @@ const Header = () => {
                 href="#services"
                 className="hover:opacity-70 transition duration-300"
               >
-                Services
+                Shërbimet
               </Link>
             </li>
             <li>
@@ -121,7 +121,7 @@ const Header = () => {
                 href="/about-us"
                 className="hover:opacity-70 transition duration-300"
               >
-                About Us
+                Rreth Nesh
               </Link>
             </li>
             <li>
@@ -129,7 +129,7 @@ const Header = () => {
                 href="/projects"
                 className="hover:opacity-70 transition duration-300"
               >
-                Projects
+                Projektet
               </Link>
             </li>
             <li>
@@ -137,7 +137,7 @@ const Header = () => {
                 href="/#GetInTouch"
                 className="hover:opacity-70 transition duration-300"
               >
-                Contacts
+                Kontakti
               </Link>
             </li>
           </ul>
@@ -189,11 +189,11 @@ const Header = () => {
           <div className="absolute top-4 left-4 right-4 bg-white rounded-[32px] shadow-[0_25px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden border border-gray-100">
             <div className="flex flex-col py-3">
               {[
-                { label: "Home", href: "/" },
-                { label: "Services", href: "/#services" },
-                { label: "About Us", href: "/about-us" },
-                { label: "Projects", href: "/projects" },
-                { label: "Contacts", href: "/#GetInTouch" },
+                { label: "Fillimi", href: "/" },
+                { label: "Shërbimet", href: "/#services" },
+                { label: "Rreth Nesh", href: "/about-us" },
+                { label: "Projektet", href: "/projects" },
+                { label: "Kontakti", href: "/#GetInTouch" },
               ].map((item, index) => (
                 <Link
                   key={index}

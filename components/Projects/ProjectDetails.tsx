@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ArrowLeft,
-  Calendar,
-  MapPin,
-  User,
-  Award,
-  Wrench,
-} from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, User, Award, Wrench } from "lucide-react";
 import { ImageGallery } from "../ImageGallery";
 import { IProject } from "@/utils/types";
 import Link from "next/link";
@@ -16,7 +9,6 @@ import Link from "next/link";
 export function ProjectDetails({ project }: { project: IProject }) {
   return (
     <div className="min-h-screen bg-[#F7F8FA] relative overflow-hidden pt-24">
-
       {/* GRID BACKGROUND */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:90px_90px]" />
 
@@ -25,30 +17,25 @@ export function ProjectDetails({ project }: { project: IProject }) {
 
       {/* HERO */}
       <div className="relative border-b border-black/5 bg-white overflow-hidden">
-
         {/* INNER GRID */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#3BA9FF_1px,transparent_1px),linear-gradient(to_bottom,#3BA9FF_1px,transparent_1px)] bg-[size:80px_80px]" />
 
         <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
-
           {/* BACK BUTTON */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="mb-10"
           >
-
             <Link
               href={"/projects"}
               className="inline-flex items-center gap-2 px-5 py-3 bg-white border border-black/5 hover:border-[#3BA9FF]/30 transition-all duration-300 shadow-sm hover:shadow-md group"
             >
-
               <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
 
               <span className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">
-                Back to Projects
+                Pas Tek Projektet
               </span>
-
             </Link>
           </motion.div>
 
@@ -58,14 +45,12 @@ export function ProjectDetails({ project }: { project: IProject }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-
             {/* BADGE */}
             <div className="inline-flex items-center gap-3 px-5 py-2 mb-8 bg-blue-50 border border-blue-100">
-
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
               <span className="text-[11px] uppercase tracking-[0.25em] text-[#3BA9FF] font-semibold">
-                Project Overview
+                Përmbledhje e Projektit
               </span>
             </div>
 
@@ -76,7 +61,6 @@ export function ProjectDetails({ project }: { project: IProject }) {
 
             {/* META */}
             <div className="flex flex-wrap gap-4 mb-10">
-
               {[
                 {
                   icon: Calendar,
@@ -106,12 +90,9 @@ export function ProjectDetails({ project }: { project: IProject }) {
                     key={index}
                     className="inline-flex items-center gap-2 px-5 py-3 bg-white border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
                   >
-
                     <Icon className="w-4 h-4 text-[#3BA9FF]" />
 
-                    <span className="text-sm text-[#5A6675]">
-                      {item.value}
-                    </span>
+                    <span className="text-sm text-[#5A6675]">{item.value}</span>
                   </div>
                 );
               })}
@@ -137,32 +118,29 @@ export function ProjectDetails({ project }: { project: IProject }) {
 
       {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
           {[
             {
-              title: "About This Project",
-              badge: "Overview",
+              title: "Rreth Këtij Projekti",
+              badge: "Përmbledhje",
               content: project?.fullDescription,
             },
             {
-              title: "Technical Challenges",
-              badge: "Challenges",
+              title: "Sfidat Teknike",
+              badge: "Sfidat",
               content: project?.challenges,
             },
             {
-              title: "Our Approach",
-              badge: "Solutions",
+              title: "Qasja Jonë",
+              badge: "Zgjidhjet",
               content: project?.solutions,
             },
             {
-              title: "Project Outcomes",
-              badge: "Results",
+              title: "Rezultatet e Projektit",
+              badge: "Rezultatet",
               content: project?.results,
             },
           ].map((section, index) => (
-
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -170,17 +148,13 @@ export function ProjectDetails({ project }: { project: IProject }) {
               transition={{ delay: 0.3 + index * 0.1 }}
               className="group relative overflow-hidden bg-white border border-black/5 p-10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-500"
             >
-
               {/* HOVER EFFECT */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#3BA9FF]/10 via-transparent to-transparent" />
 
               <div className="relative z-10">
-
                 {/* BADGE */}
                 <div className="inline-block mb-6">
-
                   <div className="px-4 py-2 bg-blue-50 border border-blue-100">
-
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#3BA9FF] font-semibold">
                       {section.badge}
                     </span>
@@ -208,43 +182,36 @@ export function ProjectDetails({ project }: { project: IProject }) {
           transition={{ delay: 0.7 }}
           className="relative overflow-hidden mt-16 bg-[#050505] p-12 md:p-16 text-center"
         >
-
           {/* GLOW */}
           <div className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] bg-[#3BA9FF]/20 blur-3xl rounded-full" />
 
           <div className="relative z-10">
-
             {/* BADGE */}
             <div className="inline-flex items-center gap-3 px-5 py-2 mb-8 bg-white/10 border border-white/10 backdrop-blur-xl">
-
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
               <span className="text-[11px] uppercase tracking-[0.25em] text-white/70 font-semibold">
-                Start Your Project
+                NISNI PROJEKTIN TUAJ
               </span>
             </div>
 
             {/* TITLE */}
             <h3 className="mb-6 text-white text-4xl md:text-5xl font-semibold tracking-[-0.05em] leading-tight">
-              Interested in Similar Work?
+              Të Interesuar për një Projekt të Ngjashëm?
             </h3>
 
             {/* TEXT */}
             <p className="text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed text-lg">
-              We’re ready to help bring your next construction or steel project
-              to life with precision, innovation, and modern engineering
-              solutions.
+              Ne jemi të gatshëm të realizojmë projektin tuaj të ardhshëm në
+              konstruksione metalike dhe ndërtim modern, duke kombinuar
+              precizitetin, inovacionin dhe zgjidhjet bashkëkohore inxhinierike.
             </p>
 
             {/* BUTTON */}
             <Link href="/#GetInTouch">
-
               <button className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#3BA9FF] text-black hover:text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-
-                Contact here
-
+                Kontaktoni Këtu
               </button>
-
             </Link>
           </div>
         </motion.div>

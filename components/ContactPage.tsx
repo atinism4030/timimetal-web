@@ -68,7 +68,7 @@ const ContactPage = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="px-8 py-3 rounded-full bg-gradient-to-r from-[#3BA9FF]/20 to-[#6FB7FF]/20 border-2 border-[#00008B]/50 backdrop-blur-sm shadow-xl"
               >
-                <span className="text-base text-[#00008B] tracking-[0.25em] uppercase">Get In Touch</span>
+                <span className="text-base text-[#00008B] tracking-[0.25em] uppercase">Na Kontaktoniii</span>
               </motion.div>
             </div>
 
