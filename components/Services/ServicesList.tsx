@@ -1,10 +1,16 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
-import { MdArchitecture, MdRoofing, MdSolarPower,MdEngineering ,MdOutlineHomeWork} from "react-icons/md";
-import { TbSolarPanel2 } from "react-icons/tb";
+import {
+  MdRoofing,
+  MdSolarPower,
+  MdEngineering,
+  MdOutlineHomeWork,
+} from "react-icons/md";
 import { GiBeamWake } from "react-icons/gi";
-import { TbWaveSawTool, TbCarCrane } from "react-icons/tb";
+import { TbCarCrane } from "react-icons/tb";
+import { useTranslations } from "next-intl";
 
 interface Service {
   title: string;
@@ -12,46 +18,42 @@ interface Service {
   icon: React.ReactNode;
 }
 
-const services: Service[] = [
-  {
-    title: "Inxhinieri dhe Projektim Strukturor",
-    descOpen:
-      "Zgjidhje inovative dhe të sakta inxhinierike të zhvilluara për të transformuar konceptet arkitekturore në struktura funksionale, të sigurta dhe të qëndrueshme me standarde të larta profesionale.",
-    icon: <MdEngineering size={36} className="text-gray-500" />,
-  },
-  {
-    title: "Konstruksione Metalike",
-    descOpen:
-      "Realizim i strukturave moderne metalike me fokus në qëndrueshmëri, precizitet dhe funksionalitet, të përshtatura për projekte industriale, komerciale dhe rezidenciale me standarde të avancuara ndërtimi.",
-    icon: <GiBeamWake size={36} className="text-gray-500" />,
-  },
-  {
-    title: "Ndërtim me LGS",
-    descOpen:
-      "Sisteme moderne ndërtimi me çelik të lehtë që ofrojnë efikasitet të lartë, izolim superior dhe realizim të shpejtë, duke kombinuar teknologjinë bashkëkohore me qëndrueshmërinë afatgjatë.",
-    icon: <MdOutlineHomeWork size={36} className="text-gray-500" />,
-  },
-  {
-    title: "Kulme dhe Fasada Metalike",
-    descOpen:
-      "Zgjidhje moderne për mbulim dhe fasada metalike që kombinojnë estetikën arkitekturore, mbrojtjen afatgjatë dhe performancën e lartë për objekte industriale dhe komerciale",
-    icon: <MdRoofing size={36} className="text-gray-500" />,
-  },
-  {
-    title: "Shërbime me Kran",
-    descOpen:
-      "Ofrim i zgjidhjeve profesionale për ngritje dhe montim me kranë, duke garantuar siguri maksimale, precizitet operacional dhe efikasitet në realizimin e projekteve ndërtimore dhe industriale.",
-    icon: <TbCarCrane size={36} className="text-gray-500" />,
-  },
-  {
-    title: "Sisteme Fotovoltaike",
-    descOpen:
-      "Zgjidhje moderne për energji të rinovueshme të projektuara për efikasitet maksimal, kursim energjie dhe performancë afatgjatë, duke integruar teknologji të avancuar për një të ardhme më të qëndrueshme.",
-    icon: <MdSolarPower size={36} className="text-gray-500" />,
-  },
-];
-
 const ServicesList: React.FC = () => {
+  const t = useTranslations("ServicesList");
+
+  const services: Service[] = [
+    {
+      title: t("engineering.title"),
+      descOpen: t("engineering.description"),
+      icon: <MdEngineering size={36} className="text-gray-500" />,
+    },
+    {
+      title: t("metalConstruction.title"),
+      descOpen: t("metalConstruction.description"),
+      icon: <GiBeamWake size={36} className="text-gray-500" />,
+    },
+    {
+      title: t("lgs.title"),
+      descOpen: t("lgs.description"),
+      icon: <MdOutlineHomeWork size={36} className="text-gray-500" />,
+    },
+    {
+      title: t("roofsFacades.title"),
+      descOpen: t("roofsFacades.description"),
+      icon: <MdRoofing size={36} className="text-gray-500" />,
+    },
+    {
+      title: t("craneServices.title"),
+      descOpen: t("craneServices.description"),
+      icon: <TbCarCrane size={36} className="text-gray-500" />,
+    },
+    {
+      title: t("photovoltaic.title"),
+      descOpen: t("photovoltaic.description"),
+      icon: <MdSolarPower size={36} className="text-gray-500" />,
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {services.map((service, idx) => (
@@ -66,9 +68,11 @@ const ServicesList: React.FC = () => {
           <div className="mb-10 text-gray-900 group-hover:-translate-y-2 group-hover:scale-110 transition-all duration-500 origin-left">
             {service.icon}
           </div>
+
           <h3 className="text-2xl font-light text-gray-900 mb-4 tracking-tight">
             {service.title}
           </h3>
+
           <p className="text-gray-500 leading-relaxed font-light text-sm">
             {service.descOpen}
           </p>

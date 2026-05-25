@@ -1,30 +1,35 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    experimental: {
+import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+const nextConfig: NextConfig = {
+  experimental: {
     serverActions: {
       bodySizeLimit: "20mb",
     },
   },
+
   typescript: {
-    // !! Dangerously allow production builds to successfully complete even if
-    // !! your project has type errors.
     ignoreBuildErrors: true,
   },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-  images: {
-    domains: ["images.unsplash.com", "firebasestorage.googleapis.com"],
-    remotePatterns: [
-    {
-      protocol: "https",
-      hostname: "sbgxfbzkyvzskdzgsdpe.supabase.co",
-    },
-    ]
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+      },
+      {
+        protocol: "https",
+        hostname: "sbgxfbzkyvzskdzgsdpe.supabase.co",
+      },
+    ],
   },
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);

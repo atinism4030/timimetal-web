@@ -1,0 +1,97 @@
+{
+  "HeroVideo": {
+    "eyebrow": "The future of steel buildings",
+    "description": "Industrial, commercial, infrastructure, LGS, and eco-friendly homes. We transform ambitious plans into lasting realities.",
+    "viewProjects": "View Projects",
+    "scroll": "Scroll"
+  },
+  "Header": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "projects": "Projects",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "ServicesList": {
+    "engineering": {
+      "title": "Engineering and Structural Design",
+      "description": "Innovative and precise engineering solutions developed to transform architectural concepts into functional, safe, and durable structures with high professional standards."
+    },
+    "metalConstruction": {
+      "title": "Metal Constructions",
+      "description": "Construction of modern metal structures focused on durability, precision, and functionality, tailored for industrial, commercial, and residential projects with advanced building standards."
+    },
+    "lgs": {
+      "title": "LGS Construction",
+      "description": "Modern light gauge steel construction systems that offer high efficiency, superior insulation, and fast execution, combining contemporary technology with long-term durability."
+    },
+    "roofsFacades": {
+      "title": "Metal Roofs and Facades",
+      "description": "Modern solutions for metal roofing and facades that combine architectural aesthetics, long-term protection, and high performance for industrial and commercial buildings."
+    },
+    "craneServices": {
+      "title": "Crane Services",
+      "description": "Professional lifting and installation solutions with cranes, ensuring maximum safety, operational precision, and efficiency in construction and industrial projects."
+    },
+    "photovoltaic": {
+      "title": "Photovoltaic Systems",
+      "description": "Modern renewable energy solutions designed for maximum efficiency, energy savings, and long-term performance, integrating advanced technology for a more sustainable future."
+    }
+  },
+  "Services": {
+    "eyebrow": "OUR EXPERTISE",
+    "title": "Comprehensive",
+    "titleHighlight": "Engineering",
+    "description": "Providing advanced solutions for metal constructions, from initial design to final execution, supported by structural integrity and modern operational technology."
+  },
+  "AboutSection": {
+    "imageAlt": "Welding metal construction",
+    "founded": "Founded",
+    "eyebrow": "OUR HERITAGE",
+    "titleStart": "Building",
+    "titleHighlight": "Excellence",
+    "titleEnd": "Since 2003",
+    "description": "With over two decades of consistent leadership in the industry, we deliver steel structures designed with precision and built with modern technology. Our professional solutions combine structural integrity, innovative design, and the highest safety standards to successfully complete industrial projects on an international level.",
+    "button": "Discover Our Heritage",
+    "metrics": {
+      "experience": "Years of Experience",
+      "completedProjects": "Completed Projects",
+      "exportProjects": "Export Projects",
+      "clientSatisfaction": "Client Satisfaction"
+    }
+  },
+  "ProjectsHome": {
+  "title": "Our",
+  "titleHighlight": "Projects",
+  "description": "Showcasing our expertise through successful projects that reflect innovation, execution quality, and engineering excellence.",
+  "button": "Full Portfolio"
+},
+"Partners": {
+  "eyebrow": "Our Partners",
+  "title": "Our Partners"
+},
+"GetInTouch": {
+  "titleStart": "Contact",
+  "titleHighlight": "Us",
+  "description": "Ready to start your project? Contact our team for a professional consultation and quote. Our experts are ready to bring your vision to life with quality, safety, and maximum dedication.",
+  "contactInfoTitle": "Contact Information",
+  "locationLabel": "Location",
+  "locationTitle": "Visit Timimetal",
+  "contactDetails": {
+    "visit": {
+      "title": "Visit Us"
+    },
+    "phone": {
+      "title": "Call Us"
+    },
+    "email": {
+      "title": "Email Us"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "value": "Monday – Friday: 08:00 – 17:00"
+    }
+  }
+}
+}

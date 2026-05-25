@@ -1,0 +1,98 @@
+{
+  "HeroVideo": {
+    "eyebrow": "E ardhmja e ndërtesave të çelikut",
+    "description": "Industriale, komerciale, infrastrukturë, LGS, shtëpi ekologjike. Ne i transformojmë planet ambicioze në realitete të qëndrueshme.",
+    "viewProjects": "Shiko Projektet",
+    "scroll": "Scroll"
+  },
+  "Header": {
+    "home": "Fillimi",
+    "services": "Shërbimet",
+    "about": "Rreth Nesh",
+    "projects": "Projektet",
+    "contact": "Kontakti",
+    "language": "Gjuha"
+  },
+  "ServicesList": {
+    "engineering": {
+      "title": "Inxhinieri dhe Projektim Strukturor",
+      "description": "Zgjidhje inovative dhe të sakta inxhinierike të zhvilluara për të transformuar konceptet arkitekturore në struktura funksionale, të sigurta dhe të qëndrueshme me standarde të larta profesionale."
+    },
+    "metalConstruction": {
+      "title": "Konstruksione Metalike",
+      "description": "Realizim i strukturave moderne metalike me fokus në qëndrueshmëri, precizitet dhe funksionalitet, të përshtatura për projekte industriale, komerciale dhe rezidenciale me standarde të avancuara ndërtimi."
+    },
+    "lgs": {
+      "title": "Ndërtim me LGS",
+      "description": "Sisteme moderne ndërtimi me çelik të lehtë që ofrojnë efikasitet të lartë, izolim superior dhe realizim të shpejtë, duke kombinuar teknologjinë bashkëkohore me qëndrueshmërinë afatgjatë."
+    },
+    "roofsFacades": {
+      "title": "Kulme dhe Fasada Metalike",
+      "description": "Zgjidhje moderne për mbulim dhe fasada metalike që kombinojnë estetikën arkitekturore, mbrojtjen afatgjatë dhe performancën e lartë për objekte industriale dhe komerciale."
+    },
+    "craneServices": {
+      "title": "Shërbime me Kran",
+      "description": "Ofrim i zgjidhjeve profesionale për ngritje dhe montim me kranë, duke garantuar siguri maksimale, precizitet operacional dhe efikasitet në realizimin e projekteve ndërtimore dhe industriale."
+    },
+    "photovoltaic": {
+      "title": "Sisteme Fotovoltaike",
+      "description": "Zgjidhje moderne për energji të rinovueshme të projektuara për efikasitet maksimal, kursim energjie dhe performancë afatgjatë, duke integruar teknologji të avancuar për një të ardhme më të qëndrueshme."
+    }
+  },
+  "Services": {
+    "eyebrow": "AFTËSITË TONA",
+    "title": "Inxhinieri",
+    "titleHighlight": "Gjithëpërfshirëse",
+    "description": "Ofrimi i zgjidhjeve të avancuara për konstruksione metalike, nga projektimi fillestar deri në realizimin final, të mbështetura nga integriteti strukturor dhe teknologjia moderne operative."
+  },
+  "AboutSection": {
+    "imageAlt": "Saldim i konstruksioneve metalike",
+    "founded": "Themeluar",
+    "eyebrow": "TRASHËGIMIA JONË",
+    "titleStart": "Duke Ndërtuar",
+    "titleHighlight": "Ekselencë",
+    "titleEnd": "Që nga Viti 2003",
+    "description": "Me mbi dy dekada lidershipi të qëndrueshëm në industri, ne realizojmë struktura çeliku të projektuara me precizitet dhe të ndërtuara me teknologji moderne. Zgjidhjet tona profesionale kombinojnë integritetin strukturor, dizajnin inovativ dhe standardet më të larta të sigurisë për të realizuar me sukses projekte industriale në nivel ndërkombëtar.",
+    "button": "Zbuloni Trashëgiminë Tonë",
+    "metrics": {
+      "experience": "Vite Përvojë",
+      "completedProjects": "Projekte të Përfunduara",
+      "exportProjects": "Projekte Eksporti",
+      "clientSatisfaction": "Kënaqësi e Klientëve"
+    }
+  },
+  "ProjectsHome": {
+  "title": "Projektet",
+  "titleHighlight": "Tona",
+  "description": "Duke prezantuar ekspertizën tonë përmes projekteve të suksesshme që pasqyrojnë inovacionin, cilësinë e realizimit dhe ekselencën inxhinierike.",
+  "button": "Portofoli i Plotë"
+},
+"Partners": {
+  "eyebrow": "Partnerët Tanë",
+  "title": "Partnerët Tanë"
+},
+"GetInTouch": {
+  "titleStart": "Na",
+  "titleHighlight": "Kontaktoni",
+  "description": "Gati për të nisur projektin tuaj? Kontaktoni ekipin tonë për konsultë dhe ofertë profesionale. Ekspertët tanë janë të gatshëm të realizojnë vizionin tuaj me cilësi, siguri dhe përkushtim maksimal.",
+  "contactInfoTitle": "Informacioni i Kontaktit",
+  "locationLabel": "Lokacioni",
+  "locationTitle": "Vizitoni Timimetal",
+  "contactDetails": {
+    "visit": {
+      "title": "Na Vizitoni"
+    },
+    "phone": {
+      "title": "Na Telefononi"
+    },
+    "email": {
+      "title": "Na Kontaktoni me Email"
+    },
+    "hours": {
+      "title": "Orari i Punës",
+      "value": "E Hënë – E Premte: 08:00 – 17:00"
+    }
+  }
+}
+
+}

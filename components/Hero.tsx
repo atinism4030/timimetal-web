@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function HeroVideo() {
+  const t = useTranslations("HeroVideo");
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
@@ -34,6 +37,7 @@ export default function HeroVideo() {
           style={{ transform: "translateZ(0)" }}
           className="absolute inset-0 w-full h-full object-cover scale-[1.02] will-change-transform"
         />
+
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#000000_120%)] opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
       </motion.div>
@@ -57,7 +61,7 @@ export default function HeroVideo() {
                 }}
                 className="text-white/70 uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-2 ml-1"
               >
-                E ardhmja e ndertesave te celikut
+                {t("eyebrow")}
               </motion.p>
             </div>
 
@@ -75,8 +79,7 @@ export default function HeroVideo() {
             />
 
             <p className="text-gray-300 text-lg md:text-xl font-light max-w-xl leading-relaxed">
-              Industriale, komerciale, infrastrukturë, LGS, shtëpi ekologjike.
-              Ne i transformojmë planet ambicioze në realitete të qëndrueshme.
+              {t("description")}
             </p>
           </motion.div>
 
@@ -91,7 +94,7 @@ export default function HeroVideo() {
               className="group flex justify-between items-center gap-6 bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 hover:border-white/30 text-white px-8 py-4 rounded-full transition-all duration-300"
             >
               <span className="text-sm font-medium tracking-wide">
-                Shiko Projektet
+                {t("viewProjects")}
               </span>
 
               <div className="bg-white text-black p-2 rounded-full group-hover:translate-x-1 transition-transform">
@@ -110,8 +113,9 @@ export default function HeroVideo() {
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-white/40 text-[10px] uppercase tracking-widest hidden md:block">
-          Scroll
+          {t("scroll")}
         </span>
+
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

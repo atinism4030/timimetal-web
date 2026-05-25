@@ -1,0 +1,98 @@
+{
+  "HeroVideo": {
+    "eyebrow": "Die Zukunft von Stahlgebäuden",
+    "description": "Industrie, Gewerbe, Infrastruktur, LGS und ökologische Häuser. Wir verwandeln ambitionierte Pläne in nachhaltige Realität.",
+    "viewProjects": "Projekte ansehen",
+    "scroll": "Scrollen"
+  },
+  "Header": {
+    "home": "Startseite",
+    "services": "Leistungen",
+    "about": "Über uns",
+    "projects": "Projekte",
+    "contact": "Kontakt",
+    "language": "Sprache"
+  },
+  "ServicesList": {
+    "engineering": {
+      "title": "Ingenieurwesen und Tragwerksplanung",
+      "description": "Innovative und präzise ingenieurtechnische Lösungen, die entwickelt wurden, um architektonische Konzepte in funktionale, sichere und langlebige Strukturen mit hohen professionellen Standards umzusetzen."
+    },
+    "metalConstruction": {
+      "title": "Metallkonstruktionen",
+      "description": "Realisierung moderner Metallkonstruktionen mit Fokus auf Stabilität, Präzision und Funktionalität, angepasst an industrielle, gewerbliche und private Projekte mit fortschrittlichen Baustandards."
+    },
+    "lgs": {
+      "title": "Bauen mit LGS",
+      "description": "Moderne Bausysteme aus leichtem Stahl, die hohe Effizienz, hervorragende Isolierung und schnelle Umsetzung bieten und moderne Technologie mit langfristiger Beständigkeit verbinden."
+    },
+    "roofsFacades": {
+      "title": "Metalldächer und Fassaden",
+      "description": "Moderne Lösungen für Metalldächer und Fassaden, die architektonische Ästhetik, langfristigen Schutz und hohe Leistung für industrielle und gewerbliche Gebäude kombinieren."
+    },
+    "craneServices": {
+      "title": "Krandienstleistungen",
+      "description": "Professionelle Lösungen für Hebe- und Montagearbeiten mit Kränen, die maximale Sicherheit, operative Präzision und Effizienz bei Bau- und Industrieprojekten gewährleisten."
+    },
+    "photovoltaic": {
+      "title": "Photovoltaikanlagen",
+      "description": "Moderne Lösungen für erneuerbare Energien, entwickelt für maximale Effizienz, Energieeinsparung und langfristige Leistung, mit fortschrittlicher Technologie für eine nachhaltigere Zukunft."
+    }
+  },
+  "Services": {
+    "eyebrow": "UNSERE EXPERTISE",
+    "title": "Umfassendes",
+    "titleHighlight": "Engineering",
+    "description": "Wir bieten fortschrittliche Lösungen für Metallkonstruktionen, von der ersten Planung bis zur finalen Umsetzung, unterstützt durch strukturelle Integrität und moderne operative Technologie."
+  },
+  "AboutSection": {
+    "imageAlt": "Schweißen einer Metallkonstruktion",
+    "founded": "Gegründet",
+    "eyebrow": "UNSER ERBE",
+    "titleStart": "Wir bauen",
+    "titleHighlight": "Exzellenz",
+    "titleEnd": "seit 2003",
+    "description": "Mit über zwei Jahrzehnten beständiger Führung in der Branche realisieren wir Stahlkonstruktionen, die mit Präzision geplant und mit moderner Technologie gebaut werden. Unsere professionellen Lösungen verbinden strukturelle Integrität, innovatives Design und höchste Sicherheitsstandards, um Industrieprojekte auf internationalem Niveau erfolgreich umzusetzen.",
+    "button": "Unser Erbe entdecken",
+    "metrics": {
+      "experience": "Jahre Erfahrung",
+      "completedProjects": "Abgeschlossene Projekte",
+      "exportProjects": "Exportprojekte",
+      "clientSatisfaction": "Kundenzufriedenheit"
+    }
+  },
+  "ProjectsHome": {
+  "title": "Unsere",
+  "titleHighlight": "Projekte",
+  "description": "Wir präsentieren unsere Expertise durch erfolgreiche Projekte, die Innovation, Ausführungsqualität und ingenieurtechnische Exzellenz widerspiegeln.",
+  "button": "Gesamtes Portfolio"
+},
+"Partners": {
+  "eyebrow": "Unsere Partner",
+  "title": "Unsere Partner"
+},
+"GetInTouch": {
+  "titleStart": "Kontaktieren",
+  "titleHighlight": "Sie uns",
+  "description": "Bereit, Ihr Projekt zu starten? Kontaktieren Sie unser Team für eine professionelle Beratung und ein Angebot. Unsere Experten sind bereit, Ihre Vision mit Qualität, Sicherheit und höchstem Engagement umzusetzen.",
+  "contactInfoTitle": "Kontaktinformationen",
+  "locationLabel": "Standort",
+  "locationTitle": "Besuchen Sie Timimetal",
+  "contactDetails": {
+    "visit": {
+      "title": "Besuchen Sie uns"
+    },
+    "phone": {
+      "title": "Rufen Sie uns an"
+    },
+    "email": {
+      "title": "Kontaktieren Sie uns per E-Mail"
+    },
+    "hours": {
+      "title": "Öffnungszeiten",
+      "value": "Montag – Freitag: 08:00 – 17:00"
+    }
+  }
+
+}
+}

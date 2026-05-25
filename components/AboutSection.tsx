@@ -1,16 +1,22 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import WeldingImage from "@/public/Image (Welding metal construction with sparks).png";
 import Link from "next/link";
-
-const metrics = [
-  { value: "23+", label: "Vite Përvojë" },
-  { value: "587+", label: "Projekte të Përfunduara" },
-  { value: "39+", label: "Projekte Eksporti" },
-  { value: "99%", label: "Kënaqësi e Klientëve" },
-];
+import { useLocale, useTranslations } from "next-intl";
 
 const AboutSection = () => {
+  const t = useTranslations("AboutSection");
+  const locale = useLocale();
+
+  const metrics = [
+    { value: "23+", label: t("metrics.experience") },
+    { value: "587+", label: t("metrics.completedProjects") },
+    { value: "39+", label: t("metrics.exportProjects") },
+    { value: "99%", label: t("metrics.clientSatisfaction") },
+  ];
+
   return (
     <section className="bg-white w-full py-24 md:py-32 px-6 lg:px-20 border-b border-gray-100 overflow-hidden">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32 items-center">
@@ -19,14 +25,14 @@ const AboutSection = () => {
           <div className="absolute inset-0 bg-gray-100 translate-x-6 translate-y-6 rounded-xl -z-10 transition-transform duration-700 group-hover:translate-x-8 group-hover:translate-y-8" />
           <Image
             src={WeldingImage}
-            alt="Welding Metal Construction"
+            alt={t("imageAlt")}
             className="w-full h-auto object-cover rounded-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] grayscale hover:grayscale-0 transition-all duration-1000"
           />
 
           {/* Floating Heritage Badge */}
           <div className="absolute -bottom-10 -right-10 bg-[#050505] text-white p-10 rounded-xl shadow-2xl hidden md:block">
             <p className="text-xs tracking-[0.4em] font-medium uppercase text-gray-400 mb-3">
-              Themeluar
+              {t("founded")}
             </p>
             <p className="text-6xl font-light tracking-tighter">2003</p>
           </div>
@@ -35,26 +41,22 @@ const AboutSection = () => {
         {/* Right Side: Content */}
         <div className="w-full lg:w-1/2 flex flex-col mt-8 md:mt-0 lg:pl-10">
           <p className="uppercase tracking-[0.3em] text-xs font-semibold text-gray-400 mb-6">
-            TRASHËGIMIA JONË
+            {t("eyebrow")}
           </p>
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 leading-[1.1] mb-8 tracking-tight">
-            Duke Ndërtuar{" "}
+            {t("titleStart")}{" "}
             <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-black">
-              Ekselencë
+              {t("titleHighlight")}
             </span>{" "}
             <br />
-            Që nga Viti 2003
+            {t("titleEnd")}
           </h2>
 
           <div className="w-20 h-[1px] bg-gray-300 mb-8" />
 
           <p className="text-gray-500 text-lg lg:text-xl leading-relaxed mb-12 font-light">
-            Me mbi dy dekada lidershipi të qëndrueshëm në industri, ne
-            realizojmë struktura çeliku të projektuara me precizitet dhe të
-            ndërtuara me teknologji moderne. Zgjidhjet tona profesionale
-            kombinojnë integritetin strukturor, dizajnin inovativ dhe standardet
-            më të larta të sigurisë për të realizuar me sukses projekte
-            industriale në nivel ndërkombëtar.{" "}
+            {t("description")}
           </p>
 
           {/* Metrics Grid */}
@@ -75,9 +77,9 @@ const AboutSection = () => {
           </div>
 
           <div className="pt-4">
-            <Link href="/about-us">
+            <Link href={`/${locale}/about-us`}>
               <button className="bg-[#050505] text-white px-10 py-5 text-sm uppercase tracking-widest font-semibold transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex items-center gap-4 group rounded-none">
-                Zbuloni Trashëgiminë Tonë
+                {t("button")}
                 <span className="group-hover:translate-x-2 transition-transform duration-300">
                   →
                 </span>

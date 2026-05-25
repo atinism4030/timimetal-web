@@ -1,9 +1,25 @@
-import { certifications } from "@/utils/certifications";
+"use client";
+
+import { getCertifications } from "@/utils/certifications";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import React from "react";
+import { usePathname } from "next/navigation";
+
+const locales = ["sq", "en", "mk", "de"] as const;
+type Locale = (typeof locales)[number];
 
 const Certificatons = () => {
+  const pathname = usePathname();
+
+  const firstPathPart = pathname.split("/")[1];
+
+  const currentLocale: Locale = locales.includes(firstPathPart as Locale)
+    ? (firstPathPart as Locale)
+    : "sq";
+
+  const certifications = getCertifications(currentLocale);
+
   return (
     <section className="relative py-24 bg-[#F7F8FA] overflow-hidden">
       {/* GRID BACKGROUND */}
@@ -45,7 +61,7 @@ const Certificatons = () => {
         </motion.div>
 
         {/* CERTIFICATIONS GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {certifications.map((cert, index) => {
             const Icon = cert.icon;
 
@@ -134,8 +150,8 @@ const Certificatons = () => {
 
               {/* TEXT */}
               <p className="text-white/70 text-lg leading-relaxed">
-                Çdo certifikatë përfaqëson angazhimin tonë për të ofruar punë me
-                standarde të larta profesionale, duke respektuar kriteret më
+                Çdo certifikatë përfaqëson angazhimin tonë për të ofruar punë
+                me standarde të larta profesionale, duke respektuar kriteret më
                 rigoroze ndërkombëtare në siguri, cilësi dhe mbrojtje të
                 mjedisit.
               </p>

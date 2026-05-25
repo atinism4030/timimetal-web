@@ -1,9 +1,13 @@
 "use client";
+
 import React from "react";
 import ServicesList from "./ServicesList";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const Services: React.FC = () => {
+  const t = useTranslations("Services");
+
   return (
     <section className="bg-white text-black flex flex-col items-center justify-center py-24 md:py-32 px-6 lg:px-20 relative border-b border-gray-100">
       <div className="max-w-[1400px] w-full mx-auto">
@@ -15,8 +19,9 @@ const Services: React.FC = () => {
               viewport={{ once: true }}
               className="uppercase tracking-[0.3em] text-xs font-semibold text-gray-400 mb-6"
             >
-              AFTËSITË TONA
+              {t("eyebrow")}
             </motion.p>
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -24,9 +29,9 @@ const Services: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-7xl font-light tracking-tight text-gray-900 leading-[1.05]"
             >
-              Inxhinieri{" "}
+              {t("title")}{" "}
               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-black">
-                Gjithëpërfshirëse
+                {t("titleHighlight")}
               </span>
             </motion.h2>
           </div>
@@ -39,10 +44,9 @@ const Services: React.FC = () => {
             className="flex flex-col gap-6"
           >
             <div className="w-16 h-[1px] bg-gray-300 hidden lg:block" />
+
             <p className="text-gray-500 text-lg lg:text-xl max-w-lg leading-relaxed font-light">
-              Ofrimi i zgjidhjeve të avancuara për konstruksione metalike, nga
-              projektimi fillestar deri në realizimin final, të mbështetura nga
-              integriteti strukturor dhe teknologjia moderne operative.{" "}
+              {t("description")}
             </p>
           </motion.div>
         </div>

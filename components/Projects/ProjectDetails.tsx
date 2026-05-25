@@ -5,8 +5,155 @@ import { ArrowLeft, Calendar, MapPin, User, Award, Wrench } from "lucide-react";
 import { ImageGallery } from "../ImageGallery";
 import { IProject } from "@/utils/types";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const locales = ["sq", "en", "mk", "de"] as const;
+type Locale = (typeof locales)[number];
+
+const projectDetailsTexts = {
+  sq: {
+    backToProjects: "Pas Tek Projektet",
+    projectOverview: "Përmbledhje e Projektit",
+    sections: {
+      about: {
+        title: "Rreth Këtij Projekti",
+        badge: "Përmbledhje",
+      },
+      challenges: {
+        title: "Sfidat Teknike",
+        badge: "Sfidat",
+      },
+      approach: {
+        title: "Qasja Jonë",
+        badge: "Zgjidhjet",
+      },
+      results: {
+        title: "Rezultatet e Projektit",
+        badge: "Rezultatet",
+      },
+    },
+    ctaBadge: "NISNI PROJEKTIN TUAJ",
+    ctaTitle: "Të Interesuar për një Projekt të Ngjashëm?",
+    ctaDescription:
+      "Ne jemi të gatshëm të realizojmë projektin tuaj të ardhshëm në konstruksione metalike dhe ndërtim modern, duke kombinuar precizitetin, inovacionin dhe zgjidhjet bashkëkohore inxhinierike.",
+    ctaButton: "Kontaktoni Këtu",
+  },
+  en: {
+    backToProjects: "Back to Projects",
+    projectOverview: "Project Overview",
+    sections: {
+      about: {
+        title: "About This Project",
+        badge: "Overview",
+      },
+      challenges: {
+        title: "Technical Challenges",
+        badge: "Challenges",
+      },
+      approach: {
+        title: "Our Approach",
+        badge: "Solutions",
+      },
+      results: {
+        title: "Project Results",
+        badge: "Results",
+      },
+    },
+    ctaBadge: "START YOUR PROJECT",
+    ctaTitle: "Interested in a Similar Project?",
+    ctaDescription:
+      "We are ready to deliver your next project in metal construction and modern building, combining precision, innovation, and contemporary engineering solutions.",
+    ctaButton: "Contact Us",
+  },
+  mk: {
+    backToProjects: "Назад кон проектите",
+    projectOverview: "Преглед на проектот",
+    sections: {
+      about: {
+        title: "За овој проект",
+        badge: "Преглед",
+      },
+      challenges: {
+        title: "Технички предизвици",
+        badge: "Предизвици",
+      },
+      approach: {
+        title: "Нашиот пристап",
+        badge: "Решенија",
+      },
+      results: {
+        title: "Резултати од проектот",
+        badge: "Резултати",
+      },
+    },
+    ctaBadge: "ЗАПОЧНЕТЕ ГО ВАШИОТ ПРОЕКТ",
+    ctaTitle: "Заинтересирани сте за сличен проект?",
+    ctaDescription:
+      "Подготвени сме да го реализираме вашиот следен проект во метални конструкции и модерна градба, комбинирајќи прецизност, иновација и современи инженерски решенија.",
+    ctaButton: "Контактирајте нè",
+  },
+  de: {
+    backToProjects: "Zurück zu den Projekten",
+    projectOverview: "Projektübersicht",
+    sections: {
+      about: {
+        title: "Über dieses Projekt",
+        badge: "Übersicht",
+      },
+      challenges: {
+        title: "Technische Herausforderungen",
+        badge: "Herausforderungen",
+      },
+      approach: {
+        title: "Unser Ansatz",
+        badge: "Lösungen",
+      },
+      results: {
+        title: "Projektergebnisse",
+        badge: "Ergebnisse",
+      },
+    },
+    ctaBadge: "STARTEN SIE IHR PROJEKT",
+    ctaTitle: "Interessiert an einem ähnlichen Projekt?",
+    ctaDescription:
+      "Wir sind bereit, Ihr nächstes Projekt im Bereich Metallkonstruktionen und modernes Bauen umzusetzen, indem wir Präzision, Innovation und zeitgemäße technische Lösungen kombinieren.",
+    ctaButton: "Kontakt aufnehmen",
+  },
+};
 
 export function ProjectDetails({ project }: { project: IProject }) {
+  const pathname = usePathname();
+
+  const firstPathPart = pathname.split("/")[1];
+  const currentLocale: Locale = locales.includes(firstPathPart as Locale)
+    ? (firstPathPart as Locale)
+    : "sq";
+
+  const t = projectDetailsTexts[currentLocale];
+
+  const sections = [
+    {
+      title: t.sections.about.title,
+      badge: t.sections.about.badge,
+      content: project?.fullDescription,
+    },
+    {
+      title: t.sections.challenges.title,
+      badge: t.sections.challenges.badge,
+      content: project?.challenges,
+    },
+    {
+      title: t.sections.approach.title,
+      badge: t.sections.approach.badge,
+      content: project?.solutions,
+    },
+    {
+      title: t.sections.results.title,
+      badge: t.sections.results.badge,
+      content: project?.results,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#F7F8FA] relative overflow-hidden pt-24">
       {/* GRID BACKGROUND */}
@@ -28,13 +175,13 @@ export function ProjectDetails({ project }: { project: IProject }) {
             className="mb-10"
           >
             <Link
-              href={"/projects"}
+              href={`/${currentLocale}/projects`}
               className="inline-flex items-center gap-2 px-5 py-3 bg-white border border-black/5 hover:border-[#3BA9FF]/30 transition-all duration-300 shadow-sm hover:shadow-md group"
             >
               <ArrowLeft className="w-4 h-4 text-[#3BA9FF] group-hover:-translate-x-1 transition-transform duration-300" />
 
               <span className="text-sm text-[#5A6675] group-hover:text-[#3BA9FF] transition-colors duration-300">
-                Pas Tek Projektet
+                {t.backToProjects}
               </span>
             </Link>
           </motion.div>
@@ -50,7 +197,7 @@ export function ProjectDetails({ project }: { project: IProject }) {
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
               <span className="text-[11px] uppercase tracking-[0.25em] text-[#3BA9FF] font-semibold">
-                Përmbledhje e Projektit
+                {t.projectOverview}
               </span>
             </div>
 
@@ -119,28 +266,7 @@ export function ProjectDetails({ project }: { project: IProject }) {
       {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {[
-            {
-              title: "Rreth Këtij Projekti",
-              badge: "Përmbledhje",
-              content: project?.fullDescription,
-            },
-            {
-              title: "Sfidat Teknike",
-              badge: "Sfidat",
-              content: project?.challenges,
-            },
-            {
-              title: "Qasja Jonë",
-              badge: "Zgjidhjet",
-              content: project?.solutions,
-            },
-            {
-              title: "Rezultatet e Projektit",
-              badge: "Rezultatet",
-              content: project?.results,
-            },
-          ].map((section, index) => (
+          {sections.map((section, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -191,26 +317,24 @@ export function ProjectDetails({ project }: { project: IProject }) {
               <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
               <span className="text-[11px] uppercase tracking-[0.25em] text-white/70 font-semibold">
-                NISNI PROJEKTIN TUAJ
+                {t.ctaBadge}
               </span>
             </div>
 
             {/* TITLE */}
             <h3 className="mb-6 text-white text-4xl md:text-5xl font-semibold tracking-[-0.05em] leading-tight">
-              Të Interesuar për një Projekt të Ngjashëm?
+              {t.ctaTitle}
             </h3>
 
             {/* TEXT */}
             <p className="text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed text-lg">
-              Ne jemi të gatshëm të realizojmë projektin tuaj të ardhshëm në
-              konstruksione metalike dhe ndërtim modern, duke kombinuar
-              precizitetin, inovacionin dhe zgjidhjet bashkëkohore inxhinierike.
+              {t.ctaDescription}
             </p>
 
             {/* BUTTON */}
-            <Link href="/#GetInTouch">
+            <Link href={`/${currentLocale}#GetInTouch`}>
               <button className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#3BA9FF] text-black hover:text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-                Kontaktoni Këtu
+                {t.ctaButton}
               </button>
             </Link>
           </div>
