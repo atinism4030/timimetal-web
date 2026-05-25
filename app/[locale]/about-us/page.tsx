@@ -10,7 +10,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { reasons } from "@/utils/WhyUsReason";
 import ReasonCard from "@/components/About/ReasonCard";
 import TimeLineItem from "@/components/About/TimeLineItem";
-import { milestones } from "@/utils/milestone";
+import { getMilestones } from "@/utils/milestone";
 import Certificatons from "@/components/About/Certificatons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -167,6 +167,7 @@ const page = () => {
   const storySection = aboutStoryTexts[currentLocale];
   const whyUsSection = aboutWhyUsTexts[currentLocale];
   const timelineSection = aboutTimelineTexts[currentLocale];
+  const localizedMilestones = getMilestones(currentLocale);
 
   return (
     <div className="bg-[#F7F8FA] h-full overflow-hidden">
@@ -399,12 +400,12 @@ const page = () => {
           </motion.div>
 
           <div className="space-y-16 lg:space-y-24">
-            {milestones.map((milestone, index) => (
+            {localizedMilestones.map((milestone, index) => (
               <TimeLineItem
                 key={milestone.id}
                 milestone={milestone}
                 index={index}
-                isLast={index === milestones.length - 1}
+                isLast={index === localizedMilestones.length - 1}
               />
             ))}
           </div>

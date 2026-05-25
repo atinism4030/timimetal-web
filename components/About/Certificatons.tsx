@@ -9,6 +9,73 @@ import { usePathname } from "next/navigation";
 const locales = ["sq", "en", "mk", "de"] as const;
 type Locale = (typeof locales)[number];
 
+const certificationSectionTexts = {
+  sq: {
+    badge: "Standarde Cilësie",
+    titleLine1: "Certifikata &",
+    titleLine2: "Standarde Cilësie",
+    description:
+      "Angazhimi ynë ndaj cilësisë dhe sigurisë vërtetohet nga certifikatat dhe standardet më të larta ndërkombëtare.",
+    bannerBadge: "STANDARDE TË BESUESHME",
+    bannerTitle: "Të Përkushtuar ndaj Ekselencës",
+    bannerDescription:
+      "Çdo certifikatë përfaqëson angazhimin tonë për të ofruar punë me standarde të larta profesionale, duke respektuar kriteret më rigoroze ndërkombëtare në siguri, cilësi dhe mbrojtje të mjedisit.",
+    stats: [
+      "Të Certifikuar që nga 2003",
+      "Auditime Vjetore",
+      "100% në Përputhje me Standardet",
+    ],
+  },
+  en: {
+    badge: "Quality Standards",
+    titleLine1: "Certifications &",
+    titleLine2: "Quality Standards",
+    description:
+      "Our commitment to quality and safety is proven by internationally recognized certifications and high professional standards.",
+    bannerBadge: "TRUSTED STANDARDS",
+    bannerTitle: "Committed to Excellence",
+    bannerDescription:
+      "Every certification represents our commitment to delivering work with high professional standards while meeting strict international criteria for safety, quality, and environmental responsibility.",
+    stats: [
+      "Certified Since 2003",
+      "Annual Audits",
+      "100% Standards Compliant",
+    ],
+  },
+  mk: {
+    badge: "Стандарди за квалитет",
+    titleLine1: "Сертификати &",
+    titleLine2: "Стандарди за квалитет",
+    description:
+      "Нашата посветеност кон квалитет и безбедност е потврдена со меѓународно признати сертификати и високи професионални стандарди.",
+    bannerBadge: "ДОВЕРЛИВИ СТАНДАРДИ",
+    bannerTitle: "Посветени на извонредност",
+    bannerDescription:
+      "Секој сертификат ја претставува нашата посветеност да обезбедиме работа со високи професионални стандарди, почитувајќи строги меѓународни критериуми за безбедност, квалитет и заштита на животната средина.",
+    stats: [
+      "Сертифицирани од 2003",
+      "Годишни ревизии",
+      "100% усогласеност со стандардите",
+    ],
+  },
+  de: {
+    badge: "Qualitätsstandards",
+    titleLine1: "Zertifizierungen &",
+    titleLine2: "Qualitätsstandards",
+    description:
+      "Unser Engagement für Qualität und Sicherheit wird durch international anerkannte Zertifizierungen und hohe professionelle Standards bestätigt.",
+    bannerBadge: "VERTRAUENSWÜRDIGE STANDARDS",
+    bannerTitle: "Der Exzellenz verpflichtet",
+    bannerDescription:
+      "Jede Zertifizierung steht für unser Engagement, Arbeiten nach hohen professionellen Standards auszuführen und strenge internationale Kriterien für Sicherheit, Qualität und Umweltschutz einzuhalten.",
+    stats: [
+      "Zertifiziert seit 2003",
+      "Jährliche Audits",
+      "100% standardkonform",
+    ],
+  },
+};
+
 const Certificatons = () => {
   const pathname = usePathname();
 
@@ -19,6 +86,7 @@ const Certificatons = () => {
     : "sq";
 
   const certifications = getCertifications(currentLocale);
+  const t = certificationSectionTexts[currentLocale];
 
   return (
     <section className="relative py-24 bg-[#F7F8FA] overflow-hidden">
@@ -40,14 +108,14 @@ const Certificatons = () => {
           {/* BADGE */}
           <span className="inline-flex items-center gap-2 px-5 py-2 bg-blue-50 border border-blue-100 text-[#3BA9FF] text-[11px] tracking-[0.22em] uppercase font-semibold mb-6">
             <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
-            Quality Standards
+            {t.badge}
           </span>
 
           {/* TITLE */}
           <h2 className="text-[#111111] text-5xl md:text-6xl font-semibold tracking-[-0.05em] leading-[1] mb-6">
-            Certifications &
+            {t.titleLine1}
             <br />
-            Quality Standards
+            {t.titleLine2}
           </h2>
 
           {/* LINE */}
@@ -55,8 +123,7 @@ const Certificatons = () => {
 
           {/* TEXT */}
           <p className="text-gray-500 text-lg leading-relaxed max-w-3xl mx-auto">
-            Angazhimi ynë ndaj cilësisë dhe sigurisë vërtetohet nga certifikatat
-            dhe standardet më të larta ndërkombëtare.
+            {t.description}
           </p>
         </motion.div>
 
@@ -139,30 +206,23 @@ const Certificatons = () => {
                 <div className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
 
                 <span className="text-[11px] uppercase tracking-[0.22em] text-white/70 font-semibold">
-                  STANDARDE TË BESUESHME
+                  {t.bannerBadge}
                 </span>
               </div>
 
               {/* TITLE */}
               <h3 className="text-white text-4xl md:text-5xl font-semibold tracking-[-0.05em] leading-tight mb-6">
-                Të Përkushtuar ndaj Ekselencës
+                {t.bannerTitle}
               </h3>
 
               {/* TEXT */}
               <p className="text-white/70 text-lg leading-relaxed">
-                Çdo certifikatë përfaqëson angazhimin tonë për të ofruar punë
-                me standarde të larta profesionale, duke respektuar kriteret më
-                rigoroze ndërkombëtare në siguri, cilësi dhe mbrojtje të
-                mjedisit.
+                {t.bannerDescription}
               </p>
 
               {/* STATS */}
               <div className="mt-10 flex flex-wrap justify-center gap-8">
-                {[
-                  "Të Certifikuar që nga 2003",
-                  "Auditime Vjetore",
-                  "100% në Përputhje me Standardet",
-                ].map((item, index) => (
+                {t.stats.map((item, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-3 text-white/80"
