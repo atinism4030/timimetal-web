@@ -80,7 +80,7 @@ const Partners = () => {
                 alt="Partner Logo"
                 width={140}
                 height={70}
-                className="object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                className="object-contain grayscale-0 opacity-100 md:grayscale md:opacity-60 md:group-hover:grayscale-0 md:group-hover:opacity-100 transition-all duration-500"
               />
             </div>
           ))}
